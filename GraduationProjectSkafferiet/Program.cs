@@ -1,15 +1,10 @@
-namespace GraduationProjectSkafferiet
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllersWithViews();
 
-            app.MapGet("/", () => "Hello World!");
+var app = builder.Build();
 
-            app.Run();
-        }
-    }
-}
+app.UseRouting();
+app.UseEndpoints(o => o.MapControllers());
+app.UseStaticFiles();
+
+app.Run();

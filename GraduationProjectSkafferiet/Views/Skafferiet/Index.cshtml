@@ -1,0 +1,24 @@
+﻿@model IndexVM
+<form asp-controller="Skafferiet" asp-action="Index">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName"/>
+    <br />
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" />
+    <br />
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <br />
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+    <br />
+    <label asp-for="ConfirmPassword"></label>
+    <input asp-for="ConfirmPassword" />
+    <br />
+    <button class="btn-primary btn" type="submit">Register</button>
+</form>
+@section scripts{
+    <script src="~/jquery/jquery.min.js"></script>
+    <script src="~/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
