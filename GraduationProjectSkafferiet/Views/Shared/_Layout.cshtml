@@ -15,22 +15,15 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-                    <ul class="navbar-nav flex-grow-1">                                                                                               
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item col text-end">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Skafferiet" asp-action="Index">Register</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Skafferiet" asp-action="Login">Login</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item col">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Skafferiet" asp-action="Logout">Sign out</a>
-                            </li>
-                        }
-                    </ul>
+                <div>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        @RenderSection("navbutton", false)
+                    }
+                    else
+                    {
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Skafferiet" asp-action="Logout">Sign out</a>
+                    }
                 </div>
             </div>
         </nav>
