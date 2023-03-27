@@ -17,17 +17,17 @@ namespace GraduationProjectSkafferiet.Controllers
             return View();
         }
 
-        [HttpPost("/login")]
-        public IActionResult Login(LoginVM model)
-        {
-            if (!ModelState.IsValid)
-            {
-            return View();
-            }
+        //[HttpPost("/login")]
+        //public IActionResult Login(LoginVM model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //    return View();
+        //    }
 
 
 
-        }
+        //}
 
     }
 }
