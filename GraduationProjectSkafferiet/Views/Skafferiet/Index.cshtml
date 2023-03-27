@@ -1,21 +1,26 @@
-﻿@model IndexVM
+﻿@model RegisterVM
+<h1>Ready to sign up?</h1>
+<h2>By signing up you will be able to add your ingredients and search for recipes.</h2>
 <form asp-controller="Skafferiet" asp-action="Index">
-    <label asp-for="FirstName"></label>
+    <h3>Sign up for a free account</h3>
     <input asp-for="FirstName"/>
     <br />
-    <label asp-for="LastName"></label>
+    
     <input asp-for="LastName" />
     <br />
-    <label asp-for="Email"></label>
+    
     <input asp-for="Email" />
     <br />
-    <label asp-for="Password"></label>
+    
     <input asp-for="Password" />
     <br />
-    <label asp-for="ConfirmPassword"></label>
+    
     <input asp-for="ConfirmPassword" />
     <br />
     <button class="btn-primary btn" type="submit">Register</button>
+    <br />
+
+    <a asp-controller="Skafferiet" asp-action="">Already have an account? Login here!</a>
 </form>
 @section scripts{
     <script src="~/jquery/jquery.min.js"></script>
