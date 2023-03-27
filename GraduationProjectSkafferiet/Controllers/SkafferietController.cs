@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GraduationProjectSkafferiet.Views.Skafferiet;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GraduationProjectSkafferiet.Controllers
 {
@@ -9,5 +10,19 @@ namespace GraduationProjectSkafferiet.Controllers
         {
             return View();
         }
+
+        [HttpGet("/login")] 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost("/login")]
+        public IActionResult Login(LoginVM model)
+        {
+            return View();
+
+        }
+
     }
 }
