@@ -20,7 +20,12 @@ namespace GraduationProjectSkafferiet.Controllers
         [HttpPost("/login")]
         public IActionResult Login(LoginVM model)
         {
+            if (!ModelState.IsValid)
+            {
             return View();
+            }
+
+
 
         }
 
