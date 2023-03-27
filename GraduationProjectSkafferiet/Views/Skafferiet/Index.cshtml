@@ -2,25 +2,26 @@
 <h1>Ready to sign up?</h1>
 <h2>By signing up you will be able to add your ingredients and search for recipes.</h2>
 <form asp-controller="Skafferiet" asp-action="Index">
-            <h3>Sign up for a free account</h3>
-            <input asp-for="FirstName"/>
+    <h3>Sign up for a free account</h3>
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span>
     <br />
-            <input asp-for="LastName">
-            <br />
-            <div />
-            <div />
-            <input asp-for="Email" />
-            <br />
+    <input asp-for="LastName">
+    <span asp-validation-for="LastName"></span>
+    <br />
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+    <br />
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span>
+    <br />
+    <input asp-for="ConfirmPassword" />
+    <span asp-validation-for="ConfirmPassword"></span>
+    <br />
+    <button class="btn-primary btn" type="submit">Register</button>
+    <br />
 
-            <input asp-for="Password" />
-            <br />
-
-            <input asp-for="ConfirmPassword" />
-            <br />
-            <button class="btn-primary btn" type="submit">Register</button>
-            <br />
-
-            <a asp-controller="Skafferiet" asp-action="Login">Already have an account? Login here!</a>
+    <a asp-controller="Skafferiet" asp-action="Login">Already have an account? Login here!</a>
 
 
 </form>

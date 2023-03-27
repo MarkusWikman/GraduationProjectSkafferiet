@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 var connString = builder.Configuration
 .GetConnectionString("DefaultConnection");
+builder.Services.AddScoped<DataService>();
+builder.Services.AddScoped<AccountService>();
 
 builder.Services.AddDbContext<ApplicationContext>
 (o => o.UseSqlServer(connString));
