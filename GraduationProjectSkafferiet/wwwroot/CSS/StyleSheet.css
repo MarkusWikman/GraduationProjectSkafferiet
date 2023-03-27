@@ -1,0 +1,11 @@
+﻿@font-face {
+    font-family: 'msmadi-regular';
+    src: url('../fonts/msmadi-regular.ttf') format('truetype');
+}
+body {
+}
+.navbar-brand {
+    font-family: 'msmadi-regular';
+    font-size: 40px;
+}
+
