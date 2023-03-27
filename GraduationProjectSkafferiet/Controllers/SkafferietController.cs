@@ -1,5 +1,6 @@
 ﻿using GraduationProjectSkafferiet.Models;
 using GraduationProjectSkafferiet.Views.Skafferiet;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GraduationProjectSkafferiet.Controllers
@@ -17,6 +18,8 @@ namespace GraduationProjectSkafferiet.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction(nameof(Home));
             return View();
         }
         [HttpPost("")]
@@ -34,11 +37,13 @@ namespace GraduationProjectSkafferiet.Controllers
                 return View();
             }
             // Redirect user
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction(nameof(Home));
         }
         [HttpGet("/Login")]
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction(nameof(Home));
             return View();
         }
         [HttpPost("/Login")]
@@ -56,7 +61,7 @@ namespace GraduationProjectSkafferiet.Controllers
                 return View();
             }
             // Redirect user
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Home));
         }
 
         [HttpGet("Logout")]
@@ -65,6 +70,15 @@ namespace GraduationProjectSkafferiet.Controllers
             accountService.SignOut();
             return RedirectToAction(nameof(Login));
         }
+
+        [Authorize]
+        [HttpGet("/Home")]
+        public IActionResult Home()
+        {
+            return View();
+        }
+
+
 
     }
 }
