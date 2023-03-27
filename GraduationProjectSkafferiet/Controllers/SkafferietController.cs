@@ -59,5 +59,11 @@ namespace GraduationProjectSkafferiet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public void Test()
+        {
+
+
+        }
+
     }
 }
