@@ -59,6 +59,12 @@ namespace GraduationProjectSkafferiet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet("Logout")]
+        public IActionResult Logout()
+        {
+            accountService.SignOut();
+            return RedirectToAction(nameof(Login));
+        }
 
     }
 }
