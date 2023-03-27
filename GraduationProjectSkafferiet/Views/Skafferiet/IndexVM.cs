@@ -4,31 +4,28 @@ namespace GraduationProjectSkafferiet.Views.Skafferiet
 {
     public class IndexVM
     {
-        [Required(ErrorMessage = "This field is required")]
-        [Display(Name  = "First name", Prompt = "First name")]
+        [Required]
+        [Display(Prompt = "First name")]
         public string FirstName { get; set; }
 
-
-        [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "Last name", Prompt = "Last name")]
+        [Required]
+        [Display(Prompt = "Last name")]
         public string LastName { get; set; }
 
-
-        [Display(Name = "Email address", Prompt = "Email adress")]
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
+        [Display(Prompt = "Email Address")]
         [EmailAddress]
         public string Email { get; set; }
 
-
-        [Display(Name = "Password", Prompt = "Password")]
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Password)]
+        [Required]
+        [DataType(DataType.Password)]        
+        [Display(Prompt = "Password")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password", Prompt = "Confirm password")]
-        [Required(ErrorMessage = "This field is required")]
         [Compare(nameof(Password))]
+        [Display(Prompt = "Confirm password")]
         public string ConfirmPassword { get; set; }
     }
 }
