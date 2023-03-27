@@ -1,6 +1,8 @@
 ﻿@model IndexVM
+
 <h1>Ready to sign up?</h1>
 <h2>By signing up you will be able to add your ingredients and search for recipes.</h2>
+<br />
 <form asp-controller="Skafferiet" asp-action="Index">
     <h3>Sign up for a free account</h3>
     <input asp-for="FirstName" />
@@ -29,4 +31,7 @@
     <script src="~/jquery/jquery.min.js"></script>
     <script src="~/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+@section navbutton{
+    <a class="btn btn-outline-primary" asp-controller="Skafferiet" asp-action="Login">Log in</a>
 }
