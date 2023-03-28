@@ -1,6 +1,7 @@
 ﻿using GraduationProjectSkafferiet.Models;
 using GraduationProjectSkafferiet.Views.Skafferiet;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GraduationProjectSkafferiet.Controllers
@@ -80,6 +81,19 @@ namespace GraduationProjectSkafferiet.Controllers
 
             return View(model);
         }
+
+        [HttpPost("/Home")]
+        public async Task<IActionResult> CreateAsync(HomeVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await dataService.AddAsync(model);
+            return RedirectToAction(nameof(Index));
+        }
+
 
         //[Authorize]
         [HttpGet("/Recipes")]

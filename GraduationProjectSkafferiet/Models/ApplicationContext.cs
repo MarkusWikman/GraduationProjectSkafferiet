@@ -12,7 +12,7 @@ namespace GraduationProjectSkafferiet.Models
         {
         }
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 
-        public DbSet<UserInventory> UserInventories { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
 
     }
 }
