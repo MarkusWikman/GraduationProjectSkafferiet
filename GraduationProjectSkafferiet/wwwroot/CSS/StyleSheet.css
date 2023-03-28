@@ -34,6 +34,11 @@ body {
     color: inherit;
 }
 
-    a:hover {
-        color: lightgray;
+    .discrete-link:hover {
+        text-decoration: none;
+        color: inherit;
     }
+
+.card:hover {
+    background-color: whitesmoke;
+}
