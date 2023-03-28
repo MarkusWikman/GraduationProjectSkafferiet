@@ -71,10 +71,11 @@ namespace GraduationProjectSkafferiet.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("/Home")]
         public IActionResult Home()
         {
+            dataService.GetIngredientList();
             return View();
         }
 
