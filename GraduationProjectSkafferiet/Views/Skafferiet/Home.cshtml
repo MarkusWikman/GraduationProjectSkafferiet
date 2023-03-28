@@ -6,6 +6,9 @@
 
 <h1>Home</h1>
 
+<form asp-controller="Skafferiet" asp-action="Home" method="post">
+    
+
 <label for="ingredients">Choose an ingredient:</label>
 
 <select name="ingredients " id="ingredients">
@@ -21,8 +24,9 @@
 
 
 
-<button class="btn btn-primary" onclick="addItem()">Add Ingredient</button>
+<button type="submit" class="btn btn-primary">Add Ingredient</button>
 
+</form>
 
 <div id="inventoryDiv">
 
@@ -39,10 +43,3 @@
 
 </div>
 
-<script>
-  
-    function addItem() {
-        
-    }
-
-</script>

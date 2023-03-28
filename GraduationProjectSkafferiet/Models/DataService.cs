@@ -4,15 +4,19 @@ using System;
 using GraduationProjectSkafferiet.Views.Skafferiet;
 using Microsoft.Identity.Client;
 using Elfie.Serialization;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 
 namespace GraduationProjectSkafferiet.Models
 {
     public class DataService
     {
         IHttpClientFactory clientFactory;
-        public DataService(IHttpClientFactory clientFactory) // Kräver följande i program: builder.Services.AddHttpClient();
+        private readonly ApplicationContext context;
+        public DataService(IHttpClientFactory clientFactory, ApplicationContext context) // Kräver följande i program: builder.Services.AddHttpClient();
         {
             this.clientFactory = clientFactory;
+            this.context = context; 
         }
         public async Task<RecipesVM[]> GetRecipes()
         {
@@ -65,7 +69,14 @@ namespace GraduationProjectSkafferiet.Models
                     
             
             return ingredientsList;
+        }
 
+        internal async Task AddAsync(HomeVM vmodel)
+        {
+            //context.
+            
+            
+            //await SaveChangesAsync();
         }
         
     }
