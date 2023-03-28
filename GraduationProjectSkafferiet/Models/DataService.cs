@@ -13,7 +13,9 @@ namespace GraduationProjectSkafferiet.Models
         {
             const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
 
-            var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey={API_KEY}";
+            // TODO: Add a foreach to make a string of items
+
+            var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=5&apiKey={API_KEY}";
             // Hämta en instans av HttpClient för att göra anrop med
             HttpClient httpClient = clientFactory.CreateClient();
             // Anropa Web-API:t och deserialisera resultatet till en array av DTO-klasser
