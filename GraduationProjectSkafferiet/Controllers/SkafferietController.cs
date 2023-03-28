@@ -76,7 +76,7 @@ namespace GraduationProjectSkafferiet.Controllers
         public IActionResult Home(HomeVM model)
         {
             model.IngredientsList = dataService.GetIngredientList();
-            model.Inventory = new List<string>();
+            model.Inventory = new List<string>() {"Apple", "Milk" };
 
             return View(model);
         }
