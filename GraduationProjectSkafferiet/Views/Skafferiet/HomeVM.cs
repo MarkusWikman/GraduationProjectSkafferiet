@@ -1,8 +1,12 @@
-﻿namespace GraduationProjectSkafferiet.Views.Skafferiet
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace GraduationProjectSkafferiet.Views.Skafferiet
 {
     public class HomeVM
     {
-        public string[] IngredientsList { get; set; }
+        public SelectListItem[] IngredientsList { get; set; }
         public List<string> Inventory { get; set; }
+
+        public string AddIngredient { get; set; }
     }
 }

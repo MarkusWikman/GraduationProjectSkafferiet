@@ -6,17 +6,14 @@
 
 <h1>Home</h1>
 
-<form asp-controller="Skafferiet" asp-action="Home" method="post">
+<form asp-controller="Skafferiet" asp-action="Home">
     
 
 <label for="ingredients">Choose an ingredient:</label>
 
-<select name="ingredients " id="ingredients">
-    @foreach (var item in Model.IngredientsList)
-    {
-    <option value="@item">@item</option>
-        
-    }
+<select asp-for="AddIngredient" asp-items="Model.IngredientsList">
+   
+    <option>Ingredients</option>
 
 
     
@@ -24,7 +21,7 @@
 
 
 
-<button type="submit" class="btn btn-primary">Add Ingredient</button>
+<button type="submit" class="btn btn-primary" onclick="showValue()">Add Ingredient</button>
 
 </form>
 
@@ -43,3 +40,9 @@
 
 </div>
 
+<script>
+    function showValue() {
+    let ingr = document.getElementById("ingredients")
+    console.log(ingr.value)
+    }
+</script>
