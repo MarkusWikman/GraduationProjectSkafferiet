@@ -67,30 +67,7 @@ namespace GraduationProjectSkafferiet.Models
             return ingredientsList;
 
         }
-        //public async Task<RecipeInfoVM> GetRecipeByIdAsync(int id)
-        //{
-        //    const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
-        //    var url = $"https://api.spoonacular.com/recipes/{id}/analyzedInstructions&apiKey={API_KEY}";
-
-        //    HttpClient httpClient = clientFactory.CreateClient();
-        //    RecipeInfoDto recipe = await httpClient.GetFromJsonAsync<RecipeInfoDto>(url);
-
-        //    RecipeInfoVM vm = new RecipeInfoVM() { Title = recipe.Name };
-
-        //    for (int i = 0; i < recipe.Steps.Count; i++)
-        //    {
-        //        RecipeInfoDto.StepsDto item = new RecipeInfoDto.StepsDto();
-        //        item = recipe.Steps[i];
-        //        vm.Instructions[i] = item.Step;
-        //        for (int j = 0; j < item.Ingredients.Count; j++)
-        //        {
-        //            item.Ingredients[j] = new RecipeInfoDto.StepsDto.IngredientDto();
-        //            vm.Ingredients[i] += item.Ingredients[j].Name + ',';
-        //        }
-        //    }
-
-        //    return vm;
-        //}
+        
     }
 }
 
