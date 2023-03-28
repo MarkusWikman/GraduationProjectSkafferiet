@@ -13,7 +13,10 @@
             <div class="container-fluid">
                 <div>
                     <a class="navbar-brand" asp-area="" asp-controller="Skafferiet" asp-action="Index">Skafferiet🥗</a>
-                    <a asp-controller="Skafferiet" asp-action="Home">Ingredients</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Skafferiet" asp-action="Home">Ingredients</a>
+                    }
                 </div>
                 <div>
                     @if (User.Identity.IsAuthenticated)
