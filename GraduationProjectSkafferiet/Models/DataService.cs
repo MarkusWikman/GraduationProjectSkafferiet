@@ -47,6 +47,32 @@ namespace GraduationProjectSkafferiet.Models
             })
             .ToArray();
         }
+        internal async Task<RecipeInfoVM> GetRecipeByIdAsync(int id)
+        {
+            const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+            var url = $"https://api.spoonacular.com/recipes/informationBulk?ids={id}&includeNutrition=false&apiKey={API_KEY}";
+
+            HttpClient httpClient = clientFactory.CreateClient();
+
+            // Går endast om det är en array, dock tar vi ändå bara in ett recept i taget
+            RecipeInfoDto[] recipe = await httpClient.GetFromJsonAsync<RecipeInfoDto[]>(url);
+            
+            RecipeInfoVM vm = new RecipeInfoVM
+            {
+                Title = recipe[0].Title,
+                Image = recipe[0].Image,
+                Servings = recipe[0].Servings,
+                ReadyInMinutes = recipe[0].ReadyInMinutes,
+                Instructions = recipe[0].Instructions.Split(",").ToList()
+            };
+
+            foreach (var item in recipe[0].ExtendedIngredients)
+            {
+                vm.Ingredients.Add(item.Original);
+            }
+
+            return vm;
+        }
 
 
         public SelectListItem[] GetIngredientList()
@@ -96,7 +122,7 @@ namespace GraduationProjectSkafferiet.Models
            
             await context.SaveChangesAsync();
         }
-        
+
     }
 }
 

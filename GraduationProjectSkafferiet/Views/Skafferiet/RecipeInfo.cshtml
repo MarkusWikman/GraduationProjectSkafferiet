@@ -1,6 +1,7 @@
 ﻿@model RecipeInfoVM;
 
 <h1>@Model.Title</h1>
+<span>(@Model.Servings servings ready in @Model.ReadyInMinutes minutes)</span>
 @foreach (var item in Model.Ingredients)
 {
     <p>@item</p>
