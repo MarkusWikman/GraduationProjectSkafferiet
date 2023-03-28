@@ -11,17 +11,22 @@ namespace GraduationProjectSkafferiet.Models
         }
         public async Task<RecipesVM[]> GetRecipes()
         {
-            var url = "https://jsonplaceholder.typicode.com/photos";
+            const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+
+            var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey={API_KEY}";
             // Hämta en instans av HttpClient för att göra anrop med
             HttpClient httpClient = clientFactory.CreateClient();
             // Anropa Web-API:t och deserialisera resultatet till en array av DTO-klasser
-            RecipesVM[] photos = await httpClient.GetFromJsonAsync<PhotoDto[]>(url);
+            RecipeDto[] recipes = await httpClient.GetFromJsonAsync<RecipeDto[]>(url);
             // Konvertera DTO-klasserna till vy-modeller
-            return photos
-            .Select(o => new IndexVM
+            return recipes
+            .Select(o => new RecipesVM
             {
                 Title = o.Title,
-                ImgUrl = o.Url
+                Id = o.Id,
+                MissedIngredientCount = o.MissedIngredientCount,
+                IngredientsTotally = o.UsedIngredientCount + o.MissedIngredientCount,
+                Image = o.Image,
             })
             .ToArray();
         }

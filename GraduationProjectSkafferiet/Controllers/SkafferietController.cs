@@ -78,11 +78,12 @@ namespace GraduationProjectSkafferiet.Controllers
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("/Recipes")]
-        public IActionResult Recipes()
+        public async Task<IActionResult> RecipesAsync()
         {
-            return View();
+            var model = await dataService.GetRecipes();
+            return View(model);
         }
 
 
