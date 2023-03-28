@@ -1,7 +1,48 @@
-﻿
+﻿@model HomeVM
+
 @{
     ViewData["Title"] = "Home";
 }
 
 <h1>Home</h1>
 
+<label for="ingredients">Choose an ingredient:</label>
+
+<select name="ingredients " id="ingredients">
+    @foreach (var item in Model.IngredientsList)
+    {
+    <option value="@item">@item</option>
+        
+    }
+
+
+    
+</select>
+
+
+
+<button class="btn btn-primary" onclick="addItem()">Add Ingredient</button>
+
+
+<div id="inventoryDiv">
+
+    <ul>
+
+    @foreach (var item in Model.Inventory)
+    {
+        <li>@item</li>
+       
+    }
+
+
+    </ul>
+
+</div>
+
+<script>
+  
+    function addItem() {
+        
+    }
+
+</script>

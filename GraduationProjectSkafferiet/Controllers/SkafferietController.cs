@@ -73,10 +73,12 @@ namespace GraduationProjectSkafferiet.Controllers
 
         //[Authorize]
         [HttpGet("/Home")]
-        public IActionResult Home()
+        public IActionResult Home(HomeVM model)
         {
-            dataService.GetIngredientList();
-            return View();
+            model.IngredientsList = dataService.GetIngredientList();
+            model.Inventory = new List<string>() {"Apple", "Milk" };
+
+            return View(model);
         }
 
         //[Authorize]
