@@ -7,7 +7,7 @@
         public string Image { get; set; }
         public int Servings { get; set; }
         public int ReadyInMinutes { get; set; }
-        public string Instructions { get; set; }
+        public string? Instructions { get; set; }
         public List<ExtendedIngredient> ExtendedIngredients { get; set; }
 
 

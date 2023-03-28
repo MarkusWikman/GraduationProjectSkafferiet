@@ -56,14 +56,14 @@ namespace GraduationProjectSkafferiet.Models
 
             // Går endast om det är en array, dock tar vi ändå bara in ett recept i taget
             RecipeInfoDto[] recipe = await httpClient.GetFromJsonAsync<RecipeInfoDto[]>(url);
-            
+
             RecipeInfoVM vm = new RecipeInfoVM
             {
                 Title = recipe[0].Title,
                 Image = recipe[0].Image,
                 Servings = recipe[0].Servings,
                 ReadyInMinutes = recipe[0].ReadyInMinutes,
-                Instructions = recipe[0].Instructions.Split(",").ToList()
+                Instructions = recipe[0].Instructions != null ? recipe[0].Instructions.Split(",").ToList() : new List<string> { "No instructions found" }
             };
 
             foreach (var item in recipe[0].ExtendedIngredients)
