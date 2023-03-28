@@ -1,0 +1,15 @@
+﻿@model RecipeInfoVM;
+
+<h1>@Model.Title</h1>
+@foreach (var item in Model.Ingredients)
+{
+    <p>@item</p>
+}
+<img src="@Model.Image"/>
+<h2>Instructions</h2>
+<ol>
+    @foreach (var item in Model.Instructions)
+    {
+        <li>@item</li>
+    }
+</ol>
