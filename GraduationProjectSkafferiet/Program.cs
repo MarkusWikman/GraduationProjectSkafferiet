@@ -22,6 +22,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 builder.Services.ConfigureApplicationCookie(
 o => o.LoginPath = "/login");
 
+builder.Services.AddHttpClient();
+
 var app = builder.Build();
 
 app.UseRouting();

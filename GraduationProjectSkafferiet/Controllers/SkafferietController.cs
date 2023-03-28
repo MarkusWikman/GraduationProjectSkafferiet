@@ -78,6 +78,13 @@ namespace GraduationProjectSkafferiet.Controllers
             return View();
         }
 
+        [Authorize]
+        [HttpGet("/Recipes")]
+        public IActionResult Recipes()
+        {
+            return View();
+        }
+
 
 
     }
