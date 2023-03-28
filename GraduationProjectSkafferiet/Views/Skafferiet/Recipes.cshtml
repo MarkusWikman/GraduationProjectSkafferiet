@@ -1,12 +1,13 @@
 ﻿@model RecipesVM[]
 <h1 class="text-center">Suggested recipes</h1>
+
 <hr />
 @for (int i = 0; i < Model.Length; i++)
 {
     if (i % 2 == 0)
     {
         <div class="card mb-3 text-center mx-auto" style="max-width: 540px;">
-            <a class="discrete-link" asp-action="Home">
+            <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
@@ -25,7 +26,7 @@
     else
     {
         <div class="card mb-3 text-center mx-auto" style="max-width: 540px;">
-            <a class="discrete-link" asp-action="Home">
+            <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
                 <div class="row g-0">
                     <div class="col-md-8">
                         <div class="card-body">
