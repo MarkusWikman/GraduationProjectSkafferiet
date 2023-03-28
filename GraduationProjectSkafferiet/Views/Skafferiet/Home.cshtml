@@ -1,7 +1,20 @@
-﻿
+﻿@model HomeVM
+
 @{
     ViewData["Title"] = "Home";
 }
 
 <h1>Home</h1>
 
+<label for="ingredients">Choose an ingredient:</label>
+
+<select name="ingredients " id="ingredients">
+    @foreach (var item in Model.IngredientsList)
+    {
+    <option value="@item">@item</option>
+        
+    }
+
+
+    
+</select>
