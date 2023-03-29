@@ -7,21 +7,21 @@
 <h1>Home</h1>
 
 <form asp-controller="Skafferiet" asp-action="Home">
-    
-
-<label for="ingredients">Choose an ingredient:</label>
-
-<select asp-for="AddIngredient" asp-items="Model.IngredientsList">
-   
-    <option>Ingredients</option>
 
 
-    
-</select>
+    <label for="ingredients">Choose an ingredient:</label>
+
+    <select asp-for="AddIngredient" asp-items="Model.IngredientsList">
+
+        <option>Ingredients</option>
 
 
 
-<button type="submit" class="btn btn-primary" onclick="showValue()">Add Ingredient</button>
+    </select>
+
+
+
+    <button type="submit" class="btn btn-primary" onclick="showValue()">Add Ingredient</button>
 
 </form>
 
@@ -52,7 +52,7 @@
 
 <script>
     function showValue() {
-    let ingr = document.getElementById("ingredients")
-    console.log(ingr.value)
+        let ingr = document.getElementById("ingredients")
+        console.log(ingr.value)
     }
 </script>
