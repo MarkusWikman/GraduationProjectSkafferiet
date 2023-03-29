@@ -108,10 +108,16 @@ namespace GraduationProjectSkafferiet.Controllers
         public async Task<IActionResult> RecipeInfo(int id)
         {
             RecipeInfoVM vm = await dataService.GetRecipeByIdAsync(id);
-            
+
             return View(vm);
         }
 
-        
+        [HttpPost("Delete")]
+        public async Task<IActionResult> Delete(string ingredientName)
+        {
+            await dataService.DeleteIngredientAsync(ingredientName);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
