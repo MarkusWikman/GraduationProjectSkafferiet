@@ -68,7 +68,16 @@ namespace GraduationProjectSkafferiet.Models
                 Instructions = recipe[0].Instructions != null ? Regex.Replace(recipe[0].Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
             };
 
+
             vm.Instructions[vm.Instructions.Count -1] += "Enjoy!";
+
+            for (int i = 0; i < vm.Instructions.Count; i++)
+            {
+                if (vm.Instructions[i][0] == ' ')
+                vm.Instructions[i] = char.ToUpper(vm.Instructions[i][1]) + vm.Instructions[i].Substring(2);        
+                else
+                vm.Instructions[i] = char.ToUpper(vm.Instructions[i][0]) + vm.Instructions[i].Substring(1);                
+            }
 
             foreach (var item in recipe[0].ExtendedIngredients)
             {
