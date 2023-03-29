@@ -27,11 +27,17 @@
 
 <div id="inventoryDiv">
 
-    <ul>
+    <ul class="list-unstyled">
 
     @foreach (var item in Model.Inventory)
     {
-        <li>@item.IngredientName</li>
+        <form asp-action="Delete" asp-controller="Skafferiet"> 
+        <li>
+            <button class="d-inline-block align-middle btn-close" type="submit" name="ingredientName" value="@item.IngredientName"></button>
+                <div class="d-inline-block align-middle">  @item.IngredientName</div>
+        </li>
+        </form>
+
        
     }
 

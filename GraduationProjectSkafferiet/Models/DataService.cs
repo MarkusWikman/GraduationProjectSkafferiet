@@ -133,14 +133,18 @@ namespace GraduationProjectSkafferiet.Models
         internal async Task<Ingredient[]> GetInventoryAsync()
         {
             var q = await context.Ingredients.Where(i => i.ApplicationUserId== userId).OrderBy(i => i.IngredientName).ToArrayAsync();
-            foreach (var item in q)
-            {
-            Console.WriteLine(q);
-
-            }
+           
            return q;
         }
+        //Delete
+        public async Task DeleteIngredientAsync(string ingredientName)
+        {
+            Console.WriteLine(ingredientName);
 
+            var q = context.Ingredients.Where(i => i.ApplicationUserId == userId).SingleOrDefault(d => d.IngredientName == ingredientName);
+            context.Ingredients.Remove(q);
+            await context.SaveChangesAsync();
+        }
 
     }
 }
