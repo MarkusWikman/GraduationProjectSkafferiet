@@ -120,7 +120,7 @@ namespace GraduationProjectSkafferiet.Models
 
         internal async Task<Ingredient[]> GetInventoryAsync()
         {
-            var q = await context.Ingredients.Where(i => i.ApplicationUserId== userId).ToArrayAsync();
+            var q = await context.Ingredients.Where(i => i.ApplicationUserId== userId).OrderBy(i => i.IngredientName).ToArrayAsync();
             foreach (var item in q)
             {
             Console.WriteLine(q);
