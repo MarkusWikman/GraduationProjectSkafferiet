@@ -33,7 +33,8 @@ namespace GraduationProjectSkafferiet.Models
             {
                 ingredientsString += item + ',';
             }
-            const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+            //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+            const string API_KEY = "5de75e27041d4a679843456a51cb8637";
 
             // TODO: Add a foreach to make a string of items
 
@@ -56,7 +57,8 @@ namespace GraduationProjectSkafferiet.Models
         }
         internal async Task<RecipeInfoVM> GetRecipeByIdAsync(int id)
         {
-            const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+            //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+            const string API_KEY = "5de75e27041d4a679843456a51cb8637";
             var url = $"https://api.spoonacular.com/recipes/informationBulk?ids={id}&includeNutrition=false&apiKey={API_KEY}";
 
             HttpClient httpClient = clientFactory.CreateClient();
@@ -69,19 +71,19 @@ namespace GraduationProjectSkafferiet.Models
                 Title = recipe[0].Title,
                 Image = recipe[0].Image,
                 Servings = recipe[0].Servings,
-                ReadyInMinutes = recipe[0].ReadyInMinutes,                
+                ReadyInMinutes = recipe[0].ReadyInMinutes,
                 Instructions = recipe[0].Instructions != null ? Regex.Replace(recipe[0].Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
             };
 
 
-            vm.Instructions[vm.Instructions.Count -1] += "Enjoy!";
+            vm.Instructions[vm.Instructions.Count - 1] += "Enjoy!";
 
             for (int i = 0; i < vm.Instructions.Count; i++)
             {
                 if (vm.Instructions[i][0] == ' ')
-                vm.Instructions[i] = char.ToUpper(vm.Instructions[i][1]) + vm.Instructions[i].Substring(2);        
+                    vm.Instructions[i] = char.ToUpper(vm.Instructions[i][1]) + vm.Instructions[i].Substring(2);
                 else
-                vm.Instructions[i] = char.ToUpper(vm.Instructions[i][0]) + vm.Instructions[i].Substring(1);                
+                    vm.Instructions[i] = char.ToUpper(vm.Instructions[i][0]) + vm.Instructions[i].Substring(1);
             }
 
             foreach (var item in recipe[0].ExtendedIngredients)
@@ -128,36 +130,36 @@ namespace GraduationProjectSkafferiet.Models
 
         internal async Task AddAsync(HomeVM vmodel)
         {
-            
-            context.Ingredients.Add(new Ingredient {IngredientName= vmodel.AddIngredient, ApplicationUserId = userId});
-            
-           
+
+            context.Ingredients.Add(new Ingredient { IngredientName = vmodel.AddIngredient, ApplicationUserId = userId });
+
+
             await context.SaveChangesAsync();
         }
 
         internal async Task<SelectListItem[]> GetInventoryAsync()
         {
-            var q = await context.Ingredients.Where(i => i.ApplicationUserId== userId).OrderBy(i => i.IngredientName).Select(i => i.IngredientName).ToArrayAsync();
+            var q = await context.Ingredients.Where(i => i.ApplicationUserId == userId).OrderBy(i => i.IngredientName).Select(i => i.IngredientName).ToArrayAsync();
 
-			SelectListItem[] inventoryIngredients = new SelectListItem[q.Length];
+            SelectListItem[] inventoryIngredients = new SelectListItem[q.Length];
 
-			for (int i = 0; i < q.Length; i++)
-			{
-				inventoryIngredients[i] = new SelectListItem
-				{
-					Value = q[i],
-					Text = q[i],
+            for (int i = 0; i < q.Length; i++)
+            {
+                inventoryIngredients[i] = new SelectListItem
+                {
+                    Value = q[i],
+                    Text = q[i],
 
-				};
-			}
-			return inventoryIngredients;
+                };
+            }
+            return inventoryIngredients;
 
-			
+
         }
         //Delete
         public async Task DeleteIngredientAsync(string ingredientName)
         {
-          
+
 
             var q = context.Ingredients.Where(i => i.ApplicationUserId == userId).SingleOrDefault(d => d.IngredientName == ingredientName);
             context.Ingredients.Remove(q);
