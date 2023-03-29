@@ -26,13 +26,18 @@ namespace GraduationProjectSkafferiet.Models
             this.userManager = userManager;
             userId = userManager.GetUserId(accessor.HttpContext.User);
         }
-        public async Task<RecipesVM[]> GetRecipes()
+        public async Task<RecipesVM[]> GetRecipes(string[] ingredients)
         {
+            string ingredientsString = "";
+            foreach (var item in ingredients)
+            {
+                ingredientsString += item + ',';
+            }
             const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
 
             // TODO: Add a foreach to make a string of items
 
-            var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients=potato,meatballs&number=5&apiKey={API_KEY}";
+            var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients={ingredientsString}&number=5&apiKey={API_KEY}";
             // Hämta en instans av HttpClient för att göra anrop med
             HttpClient httpClient = clientFactory.CreateClient();
             // Anropa Web-API:t och deserialisera resultatet till en array av DTO-klasser

@@ -98,24 +98,18 @@ namespace GraduationProjectSkafferiet.Controllers
 
         //[Authorize]
         [HttpGet("/Recipes")]
-        public async Task<IActionResult> RecipesAsync()
+        public IActionResult Recipes(RecipesVM[] model)
         {
-            var model = await dataService.GetRecipes();
             return View(model);
         }
 
 		//[Authorize]
 		[HttpPost("/Recipes")]
-		public IActionResult Recipes(HomeVM model)
+		public async Task<IActionResult> Recipes(HomeVM model)
 		{
-            foreach (var item in model.SelectedIngredients)
-            {
-                Console.WriteLine(item);
-
-            }
-
-            
-            return RedirectToAction(nameof(Index));
+            var recipeModel = await dataService.GetRecipes(model.SelectedIngredients);
+            return View(recipeModel);
+            //return RedirectToAction(nameof(Recipes), recipeModel);
 		}
 
 		//[Authorize]
@@ -123,7 +117,6 @@ namespace GraduationProjectSkafferiet.Controllers
         public async Task<IActionResult> RecipeInfo(int id)
         {
             RecipeInfoVM vm = await dataService.GetRecipeByIdAsync(id);
-
             return View(vm);
         }
 

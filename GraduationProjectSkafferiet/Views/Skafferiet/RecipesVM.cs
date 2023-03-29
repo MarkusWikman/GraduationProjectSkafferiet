@@ -7,5 +7,6 @@
         public string Image { get; set; }
         public int Id { get; set; }
         public int IngredientsTotally { get; set; }
+        public int Multiple { get; set; } = 1;
     }
 }
