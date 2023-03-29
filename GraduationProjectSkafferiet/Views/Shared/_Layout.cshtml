@@ -15,7 +15,7 @@
                     <a class="navbar-brand" asp-area="" asp-controller="Skafferiet" asp-action="Index">Skafferiet🥗</a>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a asp-controller="Skafferiet" asp-action="Home">Ingredients</a>
+                        RenderSection("breadcrumb", false);
                     }
                 </div>
                 <div>
