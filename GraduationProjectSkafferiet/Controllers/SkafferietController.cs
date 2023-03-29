@@ -127,7 +127,7 @@ namespace GraduationProjectSkafferiet.Controllers
             return View(vm);
         }
 
-        [HttpPost("Delete")]
+        [HttpGet("Delete")]
         public async Task<IActionResult> Delete(string ingredientName)
         {
             await dataService.DeleteIngredientAsync(ingredientName);

@@ -152,7 +152,7 @@ namespace GraduationProjectSkafferiet.Models
         //Delete
         public async Task DeleteIngredientAsync(string ingredientName)
         {
-            Console.WriteLine(ingredientName);
+          
 
             var q = context.Ingredients.Where(i => i.ApplicationUserId == userId).SingleOrDefault(d => d.IngredientName == ingredientName);
             context.Ingredients.Remove(q);
