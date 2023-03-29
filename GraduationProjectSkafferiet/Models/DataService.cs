@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
+using System.Text.RegularExpressions;
 
 namespace GraduationProjectSkafferiet.Models
 {
@@ -30,7 +31,7 @@ namespace GraduationProjectSkafferiet.Models
 
             // TODO: Add a foreach to make a string of items
 
-            var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=5&apiKey={API_KEY}";
+            var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients=potato,meatballs&number=5&apiKey={API_KEY}";
             // Hämta en instans av HttpClient för att göra anrop med
             HttpClient httpClient = clientFactory.CreateClient();
             // Anropa Web-API:t och deserialisera resultatet till en array av DTO-klasser
@@ -62,9 +63,11 @@ namespace GraduationProjectSkafferiet.Models
                 Title = recipe[0].Title,
                 Image = recipe[0].Image,
                 Servings = recipe[0].Servings,
-                ReadyInMinutes = recipe[0].ReadyInMinutes,
-                Instructions = recipe[0].Instructions != null ? recipe[0].Instructions.Split(",").ToList() : new List<string> { "No instructions found" }
+                ReadyInMinutes = recipe[0].ReadyInMinutes,                
+                Instructions = recipe[0].Instructions != null ? Regex.Replace(recipe[0].Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
             };
+
+            vm.Instructions[vm.Instructions.Count -1] += "Enjoy!";
 
             foreach (var item in recipe[0].ExtendedIngredients)
             {
