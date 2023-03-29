@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
-using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace GraduationProjectSkafferiet.Models
 {
@@ -107,13 +107,7 @@ namespace GraduationProjectSkafferiet.Models
                     Text = ingredientsList[i],
 
                 };
-
             }
-
-
-
-
-
             return ingredients;
         }
 
@@ -125,6 +119,18 @@ namespace GraduationProjectSkafferiet.Models
            
             await context.SaveChangesAsync();
         }
+
+        internal async Task<Ingredient[]> GetInventoryAsync()
+        {
+            var q = await context.Ingredients.Where(i => i.ApplicationUserId== userId).OrderBy(i => i.IngredientName).ToArrayAsync();
+            foreach (var item in q)
+            {
+            Console.WriteLine(q);
+
+            }
+           return q;
+        }
+
 
     }
 }

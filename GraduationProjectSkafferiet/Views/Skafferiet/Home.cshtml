@@ -29,11 +29,11 @@
 
     <ul>
 
-        @foreach (var item in Model.Inventory)
-        {
-            <li>@item</li>
-
-        }
+    @foreach (var item in Model.Inventory)
+    {
+        <li>@item.IngredientName</li>
+       
+    }
 
 
     </ul>
