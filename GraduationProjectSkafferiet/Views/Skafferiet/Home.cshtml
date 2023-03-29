@@ -6,7 +6,7 @@
 
 <h1>Home</h1>
 
-<form asp-controller="Skafferiet" asp-action="Home">
+<form id="inventory" asp-controller="Skafferiet" asp-action="Home">
 
 
     <label for="ingredients">Choose an ingredient:</label>
@@ -19,11 +19,12 @@
 
     </select>
 
-
-
-    <button type="submit" class="btn btn-primary" onclick="showValue()">Add Ingredient</button>
-
 </form>
+
+	<button type="submit" form="inventory"  class="btn btn-primary" onclick="showValue()">Add Ingredient</button>
+    <button type="submit" form="getRecipes" class="btn btn-success">Get recipes</button>
+
+
 
 <div id="inventoryDiv">
 
@@ -31,12 +32,24 @@
 
     @foreach (var item in Model.Inventory)
     {
-        <form asp-action="Delete" asp-controller="Skafferiet"> 
-        <li>
-            <button class="d-inline-block align-middle btn-close" type="submit" name="ingredientName" value="@item.IngredientName"></button>
-                <div class="d-inline-block align-middle">  @item.IngredientName</div>
+
+			<li>
+				<form id="deleteInventory" asp-action="Delete" asp-controller="Skafferiet">
+					<button class="d-inline-block align-middle btn-close" type="submit" name="ingredientName" value="@item.IngredientName"></button>
+            </form>
+                <div class="d-inline-block align-middle">  
+                    @item.IngredientName
+
+                    <form id="getRecipes" asp-action="Recipes">
+                    <input type="checkbox" name="@item.IngredientName" value="@item.IngredientName" id="@item.IngredientName"/>
+                    </form>
+                    
+                
+                
+                </div>
         </li>
-        </form>
+        
+        
 
        
     }
@@ -46,13 +59,3 @@
 
 </div>
 
-@{
-    // TODO: Add connection to the recipes page
-}
-
-<script>
-    function showValue() {
-        let ingr = document.getElementById("ingredients")
-        console.log(ingr.value)
-    }
-</script>
