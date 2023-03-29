@@ -130,11 +130,24 @@ namespace GraduationProjectSkafferiet.Models
             await context.SaveChangesAsync();
         }
 
-        internal async Task<Ingredient[]> GetInventoryAsync()
+        internal async Task<SelectListItem[]> GetInventoryAsync()
         {
-            var q = await context.Ingredients.Where(i => i.ApplicationUserId== userId).OrderBy(i => i.IngredientName).ToArrayAsync();
-           
-           return q;
+            var q = await context.Ingredients.Where(i => i.ApplicationUserId== userId).OrderBy(i => i.IngredientName).Select(i => i.IngredientName).ToArrayAsync();
+
+			SelectListItem[] inventoryIngredients = new SelectListItem[q.Length];
+
+			for (int i = 0; i < q.Length; i++)
+			{
+				inventoryIngredients[i] = new SelectListItem
+				{
+					Value = q[i],
+					Text = q[i],
+
+				};
+			}
+			return inventoryIngredients;
+
+			
         }
         //Delete
         public async Task DeleteIngredientAsync(string ingredientName)

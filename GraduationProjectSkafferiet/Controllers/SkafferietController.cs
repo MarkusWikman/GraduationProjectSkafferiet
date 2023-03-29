@@ -3,6 +3,7 @@ using GraduationProjectSkafferiet.Views.Skafferiet;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GraduationProjectSkafferiet.Controllers
 {
@@ -103,8 +104,22 @@ namespace GraduationProjectSkafferiet.Controllers
             return View(model);
         }
 
-        //[Authorize]
-        [HttpGet("/recipe")]
+		//[Authorize]
+		[HttpPost("/Recipes")]
+		public IActionResult Recipes(HomeVM model)
+		{
+            foreach (var item in model.SelectedIngredients)
+            {
+                Console.WriteLine(item);
+
+            }
+
+            
+            return RedirectToAction(nameof(Index));
+		}
+
+		//[Authorize]
+		[HttpGet("/recipe")]
         public async Task<IActionResult> RecipeInfo(int id)
         {
             RecipeInfoVM vm = await dataService.GetRecipeByIdAsync(id);

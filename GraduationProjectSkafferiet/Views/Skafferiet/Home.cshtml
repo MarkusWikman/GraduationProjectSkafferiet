@@ -21,31 +21,39 @@
 
 </form>
 
-	<button type="submit" form="inventory"  class="btn btn-primary" onclick="showValue()">Add Ingredient</button>
+	<button type="submit" form="inventory"  class="btn btn-primary">Add Ingredient</button>
     <button type="submit" form="getRecipes" class="btn btn-success">Get recipes</button>
 
 
 
 <div id="inventoryDiv">
 
+                    <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">
+                        
     <ul class="list-unstyled">
 
     @foreach (var item in Model.Inventory)
     {
 
 			<li>
-				<form id="deleteInventory" asp-action="Delete" asp-controller="Skafferiet">
-					<button class="d-inline-block align-middle btn-close" type="submit" name="ingredientName" value="@item.IngredientName"></button>
+                <div class= "d-flex">
+
+
+                    <form class="d-inline-block align-middle" id="deleteInventory" asp-action="Delete" asp-controller="Skafferiet">
+					<button class="d-inline-block align-middle btn-close" type="submit" name="ingredientName" value="@item.Value"></button>
             </form>
                 <div class="d-inline-block align-middle">  
-                    @item.IngredientName
+                    @item.Value
 
-                    <form id="getRecipes" asp-action="Recipes">
-                    <input type="checkbox" name="@item.IngredientName" value="@item.IngredientName" id="@item.IngredientName"/>
-                    </form>
+                    <div class="d-inline-block align-middle">
+
+
+                    <input type="checkbox" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="@item.Selected"/>
+                    </div>
                     
                 
                 
+                </div>
                 </div>
         </li>
         
@@ -57,5 +65,6 @@
 
     </ul>
 
+                    </form>
 </div>
 
