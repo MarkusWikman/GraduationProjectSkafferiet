@@ -148,7 +148,7 @@ namespace GraduationProjectSkafferiet.Models
                 inventoryIngredients[i] = new SelectListItem
                 {
                     Value = q[i],
-                    Text = q[i],
+                   // Text = q[i],
 
                 };
             }
