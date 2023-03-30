@@ -1,34 +1,58 @@
-﻿ol {
-    list-style-type: none;
-    counter-reset: instruction-counter;
+﻿ol.RecipeInfo {
+/*    list-style-type: none;
+    counter-reset: instruction-counter;*/
     margin: 0;
     padding: 0;
+    padding-left: 1rem !important;
 }
 
-li:before {
-    content: counter(instruction-counter) ". ";
-    counter-increment: instruction-counter;
+.RecipeInfo li:before {
+    /*content: counter(instruction-counter) ". ";*/
+    /*counter-increment: instruction-counter;*/
+    
 }
 
-small {
+/*small {
     font-size: 50%;
     font-family: 'montserrat-variablefont_wght';
     font-family: cursive;
     color: #d1cdcd;
+}*/
+
+.sizeForTextInParenthesis {
+    font-size: 50%;
+    font-family: 'montserrat-variablefont_wght';
+    color: #54e8c3;
 }
 
-sizeForIngrTitle {
-    font-size: 75%;
+.sizeForTitle {
+    font-size: 150%;
+    font-family: 'montserrat-variablefont_wght';
+    font-weight: bold;
+}
+
+.sizeForIngrTitle {
+    font-size: 100%;
+    font-family: 'montserrat-variablefont_wght';
+    font-weight: bold;
+}
+
+.sizeForIngrNInst {
+    font-size: 100%;
     font-family: 'montserrat-variablefont_wght';
 }
+
+
 
 @font-face {
     font-family: 'montserrat-variablefont_wght';
     src: url('../fonts/montserrat-variablefont_wght.ttf') format('truetype');
 }
 
-img{
-    border-radius: 50%;
+img {
+    border-radius: 15%;
+    /*clip-path: circle(50%);*/
+    /*clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);*/
 }
 
 
