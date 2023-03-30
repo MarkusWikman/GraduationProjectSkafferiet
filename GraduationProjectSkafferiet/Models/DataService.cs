@@ -74,6 +74,7 @@ namespace GraduationProjectSkafferiet.Models
                 ReadyInMinutes = recipe[0].ReadyInMinutes,
                 Instructions = recipe[0].Instructions != null ? Regex.Replace(recipe[0].Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
             };
+
             vm.Instructions.RemoveAll(instruction => string.IsNullOrWhiteSpace(instruction));
 
             for (int i = 0; i < vm.Instructions.Count; i++)
@@ -83,8 +84,6 @@ namespace GraduationProjectSkafferiet.Models
                 else
                     vm.Instructions[i] = char.ToUpper(vm.Instructions[i][0]) + vm.Instructions[i].Substring(1);
             }
-
-
 
             return vm;
 
