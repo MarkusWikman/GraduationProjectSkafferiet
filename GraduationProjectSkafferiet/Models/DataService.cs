@@ -74,9 +74,7 @@ namespace GraduationProjectSkafferiet.Models
                 ReadyInMinutes = recipe[0].ReadyInMinutes,
                 Instructions = recipe[0].Instructions != null ? Regex.Replace(recipe[0].Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
             };
-
-
-            vm.Instructions[vm.Instructions.Count - 1] += "Enjoy!";
+            vm.Instructions.RemoveAll(instruction => string.IsNullOrWhiteSpace(instruction));
 
             for (int i = 0; i < vm.Instructions.Count; i++)
             {
@@ -86,12 +84,25 @@ namespace GraduationProjectSkafferiet.Models
                     vm.Instructions[i] = char.ToUpper(vm.Instructions[i][0]) + vm.Instructions[i].Substring(1);
             }
 
-            foreach (var item in recipe[0].ExtendedIngredients)
-            {
-                vm.Ingredients.Add(item.Original);
-            }
+
 
             return vm;
+
+            //for (int i = 0; i < vm.Instructions.Count; i++)
+            //{
+            //    if (vm.Instructions[i].StartsWith(" "))
+            //    vm.Instructions[i] = vm.Instructions[i].Substring(vm.Instructions[i].IndexOf(' ') + 1);
+
+            //}
+
+            //vm.Instructions[vm.Instructions.Count - 1] += "Enjoy!";
+
+
+
+            //foreach (var item in recipe[0].ExtendedIngredients)
+            //{
+            //    vm.Ingredients.Add(item.Original);
+            //}
         }
 
 
