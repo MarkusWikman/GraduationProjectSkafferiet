@@ -85,7 +85,7 @@ namespace GraduationProjectSkafferiet.Models
                 else
                     vm.Instructions[i] = char.ToUpper(vm.Instructions[i][0]) + vm.Instructions[i].Substring(1);
             }
-            foreach (var item in recipe[0].ExtendedIngredients)
+            foreach (var item in recipe.ExtendedIngredients)
             {
                 vm.Ingredients.Add(item.Original);
             }
