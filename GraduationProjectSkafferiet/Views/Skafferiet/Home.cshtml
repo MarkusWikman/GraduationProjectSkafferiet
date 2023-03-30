@@ -25,7 +25,7 @@
                 {
                     <li>
                         <div class="d-flex">
-                            <a class="btn-close" asp-action="Delete" asp-controller="Skafferiet" asp-route-ingredientName="@item.Value"></a>
+                            <a class="btn-close" asp-action="Delete" asp-controller="Skafferiet" asp-route-ingredientName="@item.Value" onclick="clickAndDisable(this)"></a>
                             <div class="d-inline-block align-middle">
                                 @item.Value
 
@@ -46,5 +46,13 @@ else
         <p>Your pantry is empty!</p>
     </div>
 }
+<script>
+    function clickAndDisable(link) {
+        // disable subsequent clicks
+        link.onclick = function (event) {
+            event.preventDefault();
+        }
+    }
+</script>
 
 
