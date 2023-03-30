@@ -17,7 +17,8 @@ namespace GraduationProjectSkafferiet.Models
     public class DataService
     {
         //const string API_KEY = "5de75e27041d4a679843456a51cb8637";
-        const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+        //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+        const string API_KEY = "f743dfc8ba8f464ba8d1c61644153b41";
 
         IHttpClientFactory clientFactory;
         private readonly ApplicationContext context;

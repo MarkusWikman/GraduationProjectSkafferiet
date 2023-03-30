@@ -1,2 +1,81 @@
-﻿body {
+﻿@font-face {
+    font-family: 'msmadi-regular';
+    src: url('../fonts/msmadi-regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'montserrat-variablefont_wght';
+    src: url('../fonts/montserrat-variablefont_wght.ttf') format('truetype');
+}
+.menu {
+    margin: auto;
+    width: 35%;
+    border: 3px;
+    padding: 10px;
+}
+
+.navbar-brandHeader {
+    font-family: 'msmadi-regular';
+    font-size: 80px;
+    margin-bottom: 40px;
+    margin-left: 140px;
+}
+
+.selectStyle {
+    font-family: 'montserrat-variablefont_wght';
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.AIngredientStyle {
+    font-weight: bold;
+    font-family: 'montserrat-variablefont_wght';
+}
+
+.AddIngredientStyle {
+    background-color: #18A0FB;
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: -5px;
+}
+
+.GetRecipesStyle {
+    background-color: #00CB39;
+    font-family: 'montserrat-variablefont_wght';
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: -5px;
+}
+
+.InputStyle {
+    accent-color: #59E570;
+    display: inline-block;
+    white-space: nowrap;
+    height: 25px;
+    width: 35px;
+    float: right;
+    vertical-align: middle;
+}
+
+.labelStyle {
+    font-family: 'montserrat-variablefont_wght';
+    font-size: 17px;
+    display: block;
+/*    padding-left: 15px;
+    text-indent: -15px;*/
+    width: 180px;
+    vertical-align: middle;
+}
+.deleteStyle {
+    /*padding-right: 15px;*/
+    background-color: red;
+    margin-right: 10px;
+}
+a:link {
+    color: red;
 }
