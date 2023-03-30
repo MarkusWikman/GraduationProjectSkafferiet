@@ -12,7 +12,7 @@
     <select asp-for="AddIngredient" asp-items="Model.IngredientsList"></select>
 </form>
 
-<button type="submit" form="inventory" class="btn btn-primary">Add Ingredient</button>
+<button form="inventory" class="btn btn-primary" id="addIngredientButton" onclick="document.getElementById('addIngredientButton').disabled = true ;document.getElementById('inventory').submit(); ">Add Ingredient</button>
 
 @if (Model.IsIngredientChosen)
 {
