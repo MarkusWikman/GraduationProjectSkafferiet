@@ -77,10 +77,7 @@ namespace GraduationProjectSkafferiet.Controllers
         [HttpGet("/Home")]
         public async Task<IActionResult> Home(HomeVM model)
         {
-            //model.IngredientsList = dataService.GetIngredientList();
-            //model.Inventory = await dataService.GetInventoryAsync();
             model = await dataService.GetIngredientsAndInventoryAsync(model);
-
             return View(model);
         }
 
