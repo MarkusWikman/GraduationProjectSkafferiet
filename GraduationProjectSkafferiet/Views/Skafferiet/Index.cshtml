@@ -1,37 +1,70 @@
 ﻿@model IndexVM
 
-<div class="container">
+<div class="container register">
     <div class="text-center">
-        <h1 >Ready to sign up?</h1>
-        <h2 class="fw-light">By signing up you will be able to add your ingredients and search for recipes.</h2>
+        <h1 class="fw-normal my-4">Ready to sign up?</h1>
+        <h2 class="fw-normal">By signing up you will be able to add your ingredients and search for recipes.</h2>
     </div>
 
-    <div class="window mx-auto my-5 p-5 container">
-        <form asp-controller="Skafferiet" asp-action="Index">
-            <h5>Sign up for a free account</h5>
-            <input asp-for="FirstName" />
-            <span asp-validation-for="FirstName"></span>
-            <br />
-            <input asp-for="LastName">
-            <span asp-validation-for="LastName"></span>
-            <br />
-            <input asp-for="Email" />
-            <span asp-validation-for="Email"></span>
-            <br />
-            <input asp-for="Password" />
-            <span asp-validation-for="Password"></span>
-            <br />
-            <input asp-for="ConfirmPassword" />
-            <span asp-validation-for="ConfirmPassword"></span>
-            <br />
-            <button class="btn-primary btn" type="submit">Register</button>
-            <br />
-
-            <a asp-controller="Skafferiet" asp-action="Login">Already have an account? Login here!</a>
+    <div class="row">
+        <div class="col-3 align-self-center">
+            <img src="~/images/fork-removebg-preview.png" />
+        </div>
 
 
-        </form>
+        <div class="register-window mx-auto my-5 p-5 container col-6">
+            <form asp-controller="Skafferiet" asp-action="Index">
+                <h5 class="fw-bold mb-5">Sign up for a free account</h5>
+                <div class="row">
+                    <div class="form-floating col-6 px-2 my-2">
+                        <input class="form-control" asp-for="FirstName" />
+                        <label asp-for="FirstName"></label>
+                    </div>
+                    <div class="form-floating col-6 px-2 my-2">
+                        <input class="form-control" asp-for="LastName" />
+                        <label asp-for="LastName"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-floating px-2 my-2">
+                        <input class="form-control" asp-for="Email" />
+                        <label asp-for="Email"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-floating px-2 my-2">
+                        <input class="form-control" asp-for="Password" />
+                        <label asp-for="Password"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-floating px-2 my-2">
+                        <input class="form-control" asp-for="ConfirmPassword" />
+                        <label asp-for="ConfirmPassword"></label>
+                    </div>
+                </div>
+                <div class="row justify-content-end px-2 my-3">
+                    <button class="btn-primary btn col-4" type="submit">Register</button>
+                </div>
+                <div class="row text-center">
+                    <a asp-controller="Skafferiet" asp-action="Login">Already have an account? Login here!</a>
+                </div>
+
+
+
+
+                <span asp-validation-for="FirstName"></span>
+                <span asp-validation-for="LastName"></span>
+                <span asp-validation-for="Email"></span>
+                <span asp-validation-for="Password"></span>
+                <span asp-validation-for="ConfirmPassword"></span>
+            </form>
+        </div>
+        <div class="col-3 align-self-center">
+            <img src="~/images/diet-removebg-preview.png" />
+        </div>
     </div>
+
 
 </div>
 
