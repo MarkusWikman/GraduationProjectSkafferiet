@@ -13,41 +13,38 @@
 </form>
 
 <button form="inventory" class="btn btn-primary" id="addIngredientButton" onclick="document.getElementById('addIngredientButton').disabled = true ;document.getElementById('inventory').submit(); ">Add Ingredient</button>
+<button type="submit" form="getRecipes" class="btn btn-success" @(!Model.IsIngredientChosen ? "disabled" : "")>Get recipes</button>
 
 @if (Model.IsIngredientChosen)
 {
-    <button type="submit" form="getRecipes" class="btn btn-success">Get recipes</button>
+    <div id="inventoryDiv">
+
+        <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">
+            <ul class="list-unstyled">
+                @foreach (var item in Model.Inventory)
+                {
+                    <li>
+                        <div class="d-flex">
+                            <a class="btn-close" asp-action="Delete" asp-controller="Skafferiet" asp-route-ingredientName="@item.Value"></a>
+                            <div class="d-inline-block align-middle">
+                                @item.Value
+
+                                <div class="d-inline-block align-middle">
+                                    <input type="checkbox" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="" />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </form>
+    </div>
 }
 else
 {
-    <button type="submit" form="getRecipes" class="btn btn-success" disable>Get recipes</button>
+    <div>
+        <p>Your pantry is empty!</p>
+    </div>
 }
 
-
-
-
-
-
-<div id="inventoryDiv">
-
-    <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">
-        <ul class="list-unstyled">
-            @foreach (var item in Model.Inventory)
-            {
-                <li>
-                    <div class="d-flex">
-                        <a class="btn-close" asp-action="Delete" asp-controller="Skafferiet" asp-route-ingredientName="@item.Value"></a>
-                        <div class="d-inline-block align-middle">
-                            @item.Value
-
-                            <div class="d-inline-block align-middle">
-                                <input type="checkbox" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="" />
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            }
-        </ul>
-    </form>
-</div>
 
