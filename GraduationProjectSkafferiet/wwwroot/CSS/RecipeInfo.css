@@ -1,2 +1,34 @@
-﻿body {
+﻿ol {
+    list-style-type: none;
+    counter-reset: instruction-counter;
+    margin: 0;
+    padding: 0;
 }
+
+li:before {
+    content: counter(instruction-counter) ". ";
+    counter-increment: instruction-counter;
+}
+
+small {
+    font-size: 50%;
+    font-family: 'montserrat-variablefont_wght';
+    font-family: cursive;
+    color: #d1cdcd;
+}
+
+sizeForIngrTitle {
+    font-size: 75%;
+    font-family: 'montserrat-variablefont_wght';
+}
+
+@font-face {
+    font-family: 'montserrat-variablefont_wght';
+    src: url('../fonts/montserrat-variablefont_wght.ttf') format('truetype');
+}
+
+img{
+    border-radius: 50%;
+}
+
+
