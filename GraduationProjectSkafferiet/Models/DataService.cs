@@ -45,6 +45,7 @@ namespace GraduationProjectSkafferiet.Models
             RecipeDto[] recipes = await httpClient.GetFromJsonAsync<RecipeDto[]>(url);
             // Konvertera DTO-klasserna till vy-modeller
             return recipes
+            .OrderBy(o => o.MissedIngredientCount)
             .Select(o => new RecipesVM
             {
                 Title = o.Title,
@@ -59,20 +60,20 @@ namespace GraduationProjectSkafferiet.Models
         {
             //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
             const string API_KEY = "5de75e27041d4a679843456a51cb8637";
-            var url = $"https://api.spoonacular.com/recipes/informationBulk?ids={id}&includeNutrition=false&apiKey={API_KEY}";
+            var url = $"https://api.spoonacular.com/recipes/{id}/information?&includeNutrition=false&apiKey={API_KEY}";
 
             HttpClient httpClient = clientFactory.CreateClient();
 
             // Går endast om det är en array, dock tar vi ändå bara in ett recept i taget
-            RecipeInfoDto[] recipe = await httpClient.GetFromJsonAsync<RecipeInfoDto[]>(url);
+            RecipeInfoDto recipe = await httpClient.GetFromJsonAsync<RecipeInfoDto>(url);
 
             RecipeInfoVM vm = new RecipeInfoVM
             {
-                Title = recipe[0].Title,
-                Image = recipe[0].Image,
-                Servings = recipe[0].Servings,
-                ReadyInMinutes = recipe[0].ReadyInMinutes,
-                Instructions = recipe[0].Instructions != null ? Regex.Replace(recipe[0].Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
+                Title = recipe.Title,
+                Image = recipe.Image,
+                Servings = recipe.Servings,
+                ReadyInMinutes = recipe.ReadyInMinutes,
+                Instructions = recipe.Instructions != null ? Regex.Replace(recipe.Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
             };
 
             vm.Instructions.RemoveAll(instruction => string.IsNullOrWhiteSpace(instruction));
@@ -83,6 +84,10 @@ namespace GraduationProjectSkafferiet.Models
                     vm.Instructions[i] = char.ToUpper(vm.Instructions[i][1]) + vm.Instructions[i].Substring(2);
                 else
                     vm.Instructions[i] = char.ToUpper(vm.Instructions[i][0]) + vm.Instructions[i].Substring(1);
+            }
+            foreach (var item in recipe[0].ExtendedIngredients)
+            {
+                vm.Ingredients.Add(item.Original);
             }
 
             return vm;
@@ -98,10 +103,6 @@ namespace GraduationProjectSkafferiet.Models
 
 
 
-            //foreach (var item in recipe[0].ExtendedIngredients)
-            //{
-            //    vm.Ingredients.Add(item.Original);
-            //}
         }
 
         internal async Task AddAsync(HomeVM vmodel)
