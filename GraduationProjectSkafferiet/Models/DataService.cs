@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GraduationProjectSkafferiet.Models
 {
@@ -73,7 +74,7 @@ namespace GraduationProjectSkafferiet.Models
                 Image = recipe.Image,
                 Servings = recipe.Servings,
                 ReadyInMinutes = recipe.ReadyInMinutes,
-                Instructions = recipe.Instructions != null ? Regex.Replace(recipe.Instructions, "<.*?>", string.Empty).Split(".").ToList() : new List<string> { "No instructions found" }
+                Instructions = recipe.Instructions.IsNullOrEmpty() ?  new List<string> { "No instructions found" } : Regex.Replace(recipe.Instructions, "<.*?>", string.Empty).Split(".").ToList()
             };
 
             vm.Instructions.RemoveAll(instruction => string.IsNullOrWhiteSpace(instruction));
