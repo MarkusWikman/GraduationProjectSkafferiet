@@ -79,7 +79,7 @@ namespace GraduationProjectSkafferiet.Controllers
         {
             model.IngredientsList = dataService.GetIngredientList();
             model.Inventory = await dataService.GetInventoryAsync();
-
+            //model.IsIngredientChosen = model.Inventory[0] == null ? false : true;
             //model.IngredientsList = model.IngredientsList.Select(i => i.Value).Except(model.Inventory.Select(i => i.Value));
 
             return View(model);
