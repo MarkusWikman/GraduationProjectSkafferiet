@@ -1,2 +1,12 @@
-﻿body {
+﻿@font-face {
+    font-family: 'montserrat-variablefont_wght';
+    src: url('../fonts/montserrat-variablefont_wght.ttf') format('truetype');
+}
+
+.recipeItem {
+    font-family: 'montserrat-variablefont_wght';
+}
+
+.recipeItem h5{
+    color: black;
 }
