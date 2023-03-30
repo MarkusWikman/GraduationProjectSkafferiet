@@ -3,11 +3,10 @@
 @{
     ViewData["Title"] = "Home";
 }
-
-<h1>Home</h1>
+<h1 class="navbar-brand">Skafferiet</h1>
 
 <form id="inventory" asp-controller="Skafferiet" asp-action="Home">
-    <label for="ingredients">Choose an ingredient:</label>
+    <label for="ingredients">Add ingredient:</label>
 
     <select asp-for="AddIngredient" asp-items="Model.IngredientsList"></select>
 </form>
@@ -27,9 +26,8 @@
                         <div class="d-flex">
                             <a class="btn-close" asp-action="Delete" asp-controller="Skafferiet" asp-route-ingredientName="@item.Value" onclick="clickAndDisable(this)"></a>
                             <div class="d-inline-block align-middle">
-                                @item.Value
-
-                                <div class="d-inline-block align-middle">
+                                <div class="d-inline-block align-middle checkboxes">
+                                    <label for="@item.Value">@item.Value</label>
                                     <input type="checkbox" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="" />
                                 </div>
                             </div>
@@ -38,6 +36,7 @@
                 }
             </ul>
         </form>
+    </div>
     </div>
 }
 else

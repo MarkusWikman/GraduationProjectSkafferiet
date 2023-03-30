@@ -1,32 +1,40 @@
 ﻿@model IndexVM
 
-<h1>Ready to sign up?</h1>
-<h2>By signing up you will be able to add your ingredients and search for recipes.</h2>
-<br />
-<form asp-controller="Skafferiet" asp-action="Index">
-    <h3>Sign up for a free account</h3>
-    <input asp-for="FirstName" />
-    <span asp-validation-for="FirstName"></span>
-    <br />
-    <input asp-for="LastName">
-    <span asp-validation-for="LastName"></span>
-    <br />
-    <input asp-for="Email" />
-    <span asp-validation-for="Email"></span>
-    <br />
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span>
-    <br />
-    <input asp-for="ConfirmPassword" />
-    <span asp-validation-for="ConfirmPassword"></span>
-    <br />
-    <button class="btn-primary btn" type="submit">Register</button>
-    <br />
+<div class="container">
+    <div class="text-center">
+        <h1 >Ready to sign up?</h1>
+        <h2 class="fw-light">By signing up you will be able to add your ingredients and search for recipes.</h2>
+    </div>
 
-    <a asp-controller="Skafferiet" asp-action="Login">Already have an account? Login here!</a>
+    <div class="window mx-auto my-5 p-5 container">
+        <form asp-controller="Skafferiet" asp-action="Index">
+            <h5>Sign up for a free account</h5>
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
+            <br />
+            <input asp-for="LastName">
+            <span asp-validation-for="LastName"></span>
+            <br />
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+            <br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+            <br />
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword"></span>
+            <br />
+            <button class="btn-primary btn" type="submit">Register</button>
+            <br />
+
+            <a asp-controller="Skafferiet" asp-action="Login">Already have an account? Login here!</a>
 
 
-</form>
+        </form>
+    </div>
+
+</div>
+
 @section scripts{
     <script src="~/jquery/jquery.min.js"></script>
     <script src="~/jquery-validate/jquery.validate.min.js"></script>
