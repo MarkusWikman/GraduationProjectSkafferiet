@@ -15,6 +15,9 @@ namespace GraduationProjectSkafferiet.Models
 {
     public class DataService
     {
+        //const string API_KEY = "5de75e27041d4a679843456a51cb8637";
+        const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+
         IHttpClientFactory clientFactory;
         private readonly ApplicationContext context;
         UserManager<ApplicationUser> userManager;
@@ -33,8 +36,6 @@ namespace GraduationProjectSkafferiet.Models
             {
                 ingredientsString += item + ',';
             }
-            //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
-            const string API_KEY = "5de75e27041d4a679843456a51cb8637";
 
             // TODO: Add a foreach to make a string of items
 
@@ -58,8 +59,7 @@ namespace GraduationProjectSkafferiet.Models
         }
         internal async Task<RecipeInfoVM> GetRecipeByIdAsync(int id)
         {
-            //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
-            const string API_KEY = "5de75e27041d4a679843456a51cb8637";
+
             var url = $"https://api.spoonacular.com/recipes/{id}/information?&includeNutrition=false&apiKey={API_KEY}";
 
             HttpClient httpClient = clientFactory.CreateClient();
