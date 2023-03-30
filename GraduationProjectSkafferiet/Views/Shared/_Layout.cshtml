@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/css/stylesheet.css" rel="stylesheet" />
     <link href="~/css/index.css" rel="stylesheet" />
     <link href="~/css/login.css" rel="stylesheet" />
     <link href="~/css/home.css" rel="stylesheet" />
     <link href="~/css/recipes.css" rel="stylesheet" />
     <link href="~/css/recipeinfo.css" rel="stylesheet" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -36,6 +36,8 @@
     <div>
         @RenderBody()
     </div>
+    <div class="fixed-bottom navbar-brand"> Skafferiet🥗</div>
+    <div class="fixed-bottom" style="text-align: right;">&copy; Skafferiet Inc.2023. We love food!</div>
     @RenderSection("scripts", false)
 </body>
 </html>

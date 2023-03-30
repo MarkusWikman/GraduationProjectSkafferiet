@@ -1,2 +1,14 @@
-﻿body {
+﻿@font-face {
+    font-family: 'montserrat-variablefont_wght';
+    src: url('../fonts/montserrat-variablefont_wght.ttf') format('truetype');
+}
+
+.register h1, .register h2, .register h5, .register p{
+    font-family: 'montserrat-variablefont_wght'
+}
+
+.register-window {
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: 500px;
 }
