@@ -78,6 +78,7 @@ namespace GraduationProjectSkafferiet.Controllers
         public async Task<IActionResult> Home(HomeVM model)
         {
             model = await dataService.GetIngredientsAndInventoryAsync(model);
+            model.IsIngredientChosen = model.Inventory == null ? false : true;
             return View(model);
         }
 
