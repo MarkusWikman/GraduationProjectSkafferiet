@@ -27,11 +27,18 @@
     height: 35px;
     border-radius: 10px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 80px;
+
 }
 .AIngredientStyle {
     font-weight: bold;
     font-family: 'montserrat-variablefont_wght';
+}
+
+.PantryEmptyStyle {
+    font-weight: bold;
+    font-family: 'montserrat-variablefont_wght';
+    margin-top: -60px;
 }
 
 .AddIngredientStyle {
@@ -61,11 +68,12 @@
     width: 30px;
     float: right;
     vertical-align: middle;
-    margin-right: -70px
+    margin-right: -30px
 }
 
 .labelStyle {
     text-transform: capitalize;
+    margin-bottom:20px;
     font-family: 'montserrat-variablefont_wght';
     font-size: 17px;
     display: block;
@@ -77,6 +85,15 @@
 .deleteStyle {
     /*padding-right: 15px;*/
     background-color: red;
-    margin-right: 10px;
+    margin-right: 50px;
+    margin-left: 120px;
+}
+
+.roundedLines {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
 }
 
