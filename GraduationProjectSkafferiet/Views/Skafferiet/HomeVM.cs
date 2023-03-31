@@ -1,5 +1,6 @@
 ﻿using GraduationProjectSkafferiet.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace GraduationProjectSkafferiet.Views.Skafferiet
 {

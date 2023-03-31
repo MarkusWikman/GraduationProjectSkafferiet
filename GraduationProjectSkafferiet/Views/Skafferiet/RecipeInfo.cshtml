@@ -11,23 +11,23 @@
 }
 
 <div class="container mx-auto">
-    <h1 class="mb-5 sizeForTitle">@Model.Title <span class="sizeForTextInParenthesis">(@Model.Servings servings ready in @Model.ReadyInMinutes minutes)</span></h1>
+    <h1 class="mb-5 mt-5 SizeForTitle">@Model.Title <span class="SizeForTextInParenthesis">(@Model.Servings servings ready in @Model.ReadyInMinutes minutes)</span></h1>
     <div class="row">
         
         <div class="col-md-6">
             
-            <h4 class="mt-0 sizeForIngrTitle">You need to use the following ingredients</h4>
+            <h4 class="mt-0 SizeForIngrTitle">You need to use the following ingredients</h4>
             <div class="list-group-item">
                 @foreach (var item in Model.Ingredients)
                 {
-                    <div class="mb-2 sizeForIngrNInst">@item</div>
+                    <div class="mb-2 SizeForIngrNInst">@item</div>
                 }
             </div>
-            <h4 class="mt-5 sizeForIngrTitle">Instructions</h4>
+            <h4 class="mt-5 SizeForIngrTitle">Instructions</h4>
             <ol class="RecipeInfo">
                 @foreach (var item in Model.Instructions)
                 {
-                    <li class="mb-2 RecipeInfo sizeForIngrNInst" >@item</li>
+                    <li class="mb-2 RecipeInfo SizeForIngrNInst" >@item</li>
                 }
             </ol>
         </div>
@@ -37,19 +37,3 @@
     </div>
     </div>
 
-
-    @*}
-    <h1>@Model.Title</h1>
-    <span>(@Model.Servings servings ready in @Model.ReadyInMinutes minutes)</span>
-    @foreach (var item in Model.Ingredients)
-    {
-    <p>@item</p>
-    }
-    <img src="@Model.Image"/>
-    <h2>Instructions</h2>
-    <ol>
-    @foreach (var item in Model.Instructions)
-    {
-    <li>@item</li>
-    }
-    </ol>*@
