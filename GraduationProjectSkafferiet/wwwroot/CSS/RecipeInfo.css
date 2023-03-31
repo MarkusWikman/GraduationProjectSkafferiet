@@ -19,25 +19,25 @@
     color: #d1cdcd;
 }*/
 
-.sizeForTextInParenthesis {
+.SizeForTextInParenthesis {
     font-size: 50%;
     font-family: 'montserrat-variablefont_wght';
     color: #54e8c3;
 }
 
-.sizeForTitle {
+.SizeForTitle {
     font-size: 150%;
     font-family: 'montserrat-variablefont_wght';
     font-weight: bold;
 }
 
-.sizeForIngrTitle {
+.SizeForIngrTitle {
     font-size: 100%;
     font-family: 'montserrat-variablefont_wght';
     font-weight: bold;
 }
 
-.sizeForIngrNInst {
+.SizeForIngrNInst {
     font-size: 100%;
     font-family: 'montserrat-variablefont_wght';
 }
@@ -50,7 +50,7 @@
 }
 
 img {
-    border-radius: 15%;
+    border-radius: 20%;
     /*clip-path: circle(50%);*/
     /*clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);*/
 }
