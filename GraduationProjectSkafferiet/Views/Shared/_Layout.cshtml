@@ -12,7 +12,7 @@
     <link href="~/css/recipes.css" rel="stylesheet" />
     <link href="~/css/recipeinfo.css" rel="stylesheet" />
 </head>
-<body>
+<body class="min-vh-100">
 
     @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow mb-3">
     <div class="container-fluid">
@@ -66,10 +66,10 @@
     </div>
 
 
-    <div class="row justify-content-between mx-2">
-        <div class="navbar-brand col-6"> Skafferiet🥗</div>
-        <div class="col-6 text-end align-self-center" style="text-align: right;">&copy; Skafferiet Inc.2023. We love food!</div>
-    </div>
+    <footer class="d-flex justify-content-between mx-2">
+        <div class="navbar-brand col"> Skafferiet🥗</div>
+        <div class="col text-end align-self-center" style="text-align: right;">&copy; Skafferiet Inc.2023. We love food!</div>
+    </footer>
 
     @RenderSection("scripts", false)
 </body>
