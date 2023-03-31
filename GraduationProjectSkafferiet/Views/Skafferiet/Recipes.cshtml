@@ -19,6 +19,12 @@
             <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
                 <div class="row g-0">
                     <div class="col-md-4">
+                        @{
+                            if (Model[i].MissedIngredientCount == 0)
+                            {
+                                <img class="position-absolute top-0 start-0" src="~/images/thumb-up.png" />
+                            }
+                        }
                         <img src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8 ">
@@ -45,6 +51,12 @@
                         </div>
                     </div>
                     <div class="col-md-4">
+                        @{
+                            if (Model[i].MissedIngredientCount == 0)
+                            {
+                                <img class="position-absolute top-0 end-0" src="~/images/thumb-up.png" />
+                            }
+                        }
                         <img src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
                     </div>
                 </div>
