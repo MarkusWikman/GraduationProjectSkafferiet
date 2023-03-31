@@ -57,17 +57,18 @@
     accent-color: #59E570;
     display: inline-block;
     white-space: nowrap;
-    height: 25px;
-    width: 35px;
+    height: 35px;
+    width: 85px;
     float: right;
     vertical-align: middle;
 }
 
 .labelStyle {
+    text-transform: capitalize;
     font-family: 'montserrat-variablefont_wght';
     font-size: 17px;
     display: block;
-/*    padding-left: 15px;
+    /*    padding-left: 15px;
     text-indent: -15px;*/
     width: 180px;
     vertical-align: middle;

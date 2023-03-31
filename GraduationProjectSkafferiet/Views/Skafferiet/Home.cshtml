@@ -29,10 +29,9 @@
                                 <a class="btn-close deleteStyle" asp-action="Delete" asp-controller="Skafferiet" asp-route-ingredientName="@item.Value" onclick="clickAndDisable(this)"></a>
                                 <div class="d-inline-block align-middle">
                                     <div class="d-inline-block align-middle checkboxes">
-                                        <label for="@item.Value" class="labelStyle d-inline-block align-middle">@(item.Value.Substring(0, 1).ToUpper() + item.Value.Substring(1))
+                                        <label for="@item.Value" class="labelStyle d-inline-block align-middle">@item.Value
                                         <input type="checkbox" class="InputStyle" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="" />
                                         </label>
-
                                     </div>
                                 </div>
                             </div>
