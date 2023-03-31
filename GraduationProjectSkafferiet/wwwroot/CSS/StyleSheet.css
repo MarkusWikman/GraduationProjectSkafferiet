@@ -45,7 +45,6 @@ a{
     background-color: whitesmoke;
 }
 
-footer {
-    width: -webkit-fill-available;
+.fill-view{
+    min-height: calc(100vh - 165px);
 }
-
