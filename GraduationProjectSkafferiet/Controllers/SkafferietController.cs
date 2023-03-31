@@ -73,7 +73,7 @@ namespace GraduationProjectSkafferiet.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("/Home")]
         public async Task<IActionResult> Home(HomeVM model)
         {
@@ -95,15 +95,15 @@ namespace GraduationProjectSkafferiet.Controllers
         }
 
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("/Recipes")]
         public IActionResult Recipes(RecipesVM[] model)
         {
             return View(model);
         }
 
-		//[Authorize]
-		[HttpPost("/Recipes")]
+        [Authorize]
+        [HttpPost("/Recipes")]
 		public async Task<IActionResult> Recipes(HomeVM model)
 		{
             var recipeModel = await dataService.GetRecipes(model.SelectedIngredients);
@@ -111,8 +111,8 @@ namespace GraduationProjectSkafferiet.Controllers
             //return RedirectToAction(nameof(Recipes), recipeModel);
 		}
 
-		//[Authorize]
-		[HttpGet("/recipe")]
+        [Authorize]
+        [HttpGet("/recipe")]
         public async Task<IActionResult> RecipeInfo(int id)
         {
             RecipeInfoVM vm = await dataService.GetRecipeByIdAsync(id);
