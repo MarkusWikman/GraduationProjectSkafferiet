@@ -5,21 +5,21 @@
     }
 </div>
 
-    <div class="menu">
-        <h1 class="navbar-brandHeader">Skafferiet</h1>
+<div class="menu fill-view">
+    <h1 class="navbar-brandHeader">Skafferiet</h1>
 
-        <form id="inventory" asp-controller="Skafferiet" asp-action="Home">
-            <label class="AIngredientStyle" for="ingredients">Add ingredient:</label>
-            <br />
-            <select class="selectStyle" asp-for="AddIngredient" asp-items="Model.IngredientsList"></select>
+    <form id="inventory" asp-controller="Skafferiet" asp-action="Home">
+        <label class="AIngredientStyle" for="ingredients">Add ingredient:</label>
+        <br />
+        <select class="selectStyle" asp-for="AddIngredient" asp-items="Model.IngredientsList"></select>
 
-            <button form="inventory" class="btn btn-primary AddIngredientStyle" id="addIngredientButton" onclick="document.getElementById('addIngredientButton').disabled = true ;document.getElementById('inventory').submit(); ">Add Ingredient</button>
-            <button type="submit" form="getRecipes" class="btn btn-success GetRecipesStyle" @(!Model.IsIngredientChosen ? "disabled" : "")>Get Recipes</button>
-        </form>
+        <button form="inventory" class="btn btn-primary AddIngredientStyle" id="addIngredientButton" onclick="document.getElementById('addIngredientButton').disabled = true ;document.getElementById('inventory').submit(); ">Add Ingredient</button>
+        <button type="submit" form="getRecipes" class="btn btn-success GetRecipesStyle" @(!Model.IsIngredientChosen ? "disabled" : "")>Get Recipes</button>
+    </form>
 
-        @if (Model.IsIngredientChosen)
-        {
-            <div id="inventoryDiv">
+    @if (Model.IsIngredientChosen)
+    {
+        <div id="inventoryDiv">
 
             <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">
                 <ul class="list-unstyled">
@@ -30,8 +30,9 @@
                                 <a class="btn-close deleteStyle" asp-action="Delete" asp-controller="Skafferiet" asp-route-ingredientName="@item.Value" onclick="clickAndDisable(this)"></a>
                                 <div class="d-inline-block align-middle">
                                     <div class="d-inline-block align-middle checkboxes">
-                                        <label for="@item.Value" class="labelStyle d-inline-block align-middle">@item.Value
-                                        <input type="checkbox" class="InputStyle" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="" />
+                                        <label for="@item.Value" class="labelStyle d-inline-block align-middle">
+                                            @item.Value
+                                            <input type="checkbox" class="InputStyle" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="" />
                                         </label>
                                     </div>
                                 </div>
@@ -42,14 +43,14 @@
             </form>
         </div>
 
-        }
-        else
-        {
-            <div>
-                <p>Your pantry is empty!</p>
-            </div>
-        }
-    </div>
+    }
+    else
+    {
+        <div>
+            <p>Your pantry is empty!</p>
+        </div>
+    }
+</div>
 
 
 <script>
