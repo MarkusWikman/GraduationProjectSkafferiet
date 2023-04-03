@@ -2,7 +2,7 @@
 
 
 
-<main class="form-signin">
+<main class="form-signin ">
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-body text-center">
             <form asp-controller="Skafferiet" asp-action="Login">
@@ -19,13 +19,16 @@
                     <label asp-for="Password"> </label>
                     <span asp-validation-for="Password"></span>
                 </div>
-                <div class="checkbox mb-3">
+                @*<div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
+                </div>*@
+                <div class="mt-4">
+                    <input class="btn btn-primary" type="submit" value="Log in" />
+                    <a asp-action="Index" class="btn btn-success">Register</a>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Log in" />
-                <a asp-action="Index" class="btn btn-success">Register</a>
+                
                 <div asp-validation-summary="All"></div>
             </form>
 
