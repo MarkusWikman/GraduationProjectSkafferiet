@@ -17,7 +17,7 @@
         {
             if (i % 2 == 0)
             {
-                <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 740px;">
+                <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 840px;">
                     <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -27,7 +27,7 @@
                                         <img class="position-absolute top-0 start-0" src="~/images/thumb-up.png" />
                                     }
                                 }
-                                <img src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
+                                <img class="align-self-center" src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8 ">
                                 <div class="card-body">
@@ -42,7 +42,7 @@
             }
             else
             {
-                <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 740px;">
+                <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 840px;">
                     <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
                         <div class="row g-0">
                             <div class="col-md-8">
