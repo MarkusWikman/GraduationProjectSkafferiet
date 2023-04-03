@@ -39,7 +39,6 @@ namespace GraduationProjectSkafferiet.Models
                 ingredientsString += item + ',';
             }
 
-            // TODO: Add a foreach to make a string of items
 
             var url = $"https://api.spoonacular.com/recipes/findByIngredients?ingredients={ingredientsString}&number=5&apiKey={API_KEY}";
             // Hämta en instans av HttpClient för att göra anrop med
