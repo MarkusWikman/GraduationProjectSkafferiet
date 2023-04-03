@@ -48,3 +48,8 @@ a{
 .fill-view{
     min-height: calc(100vh - 165px);
 }
+
+.main-color {
+    /*background-image: radial-gradient(hsla(136, 61%, 100%), hsla(136, 61%, 40%));*/
+    background-image: radial-gradient(hsla(0, 61%, 90%), hsla(136, 61%, 100%));
+}

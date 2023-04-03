@@ -8,61 +8,67 @@
         </ol>
     </nav>
 }
-<h1 class="text-center">Suggested recipes</h1>
 
-<hr />
-@for (int i = 0; i < Model.Length; i++)
-{
-    if (i % 2 == 0)
-    {
-        <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 540px;">
-            <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        @{
-                            if (Model[i].MissedIngredientCount == 0)
-                            {
-                                <img class="position-absolute top-0 start-0" src="~/images/thumb-up.png" />
-                            }
-                        }
-                        <img src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8 ">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">@Model[i].Title</h5>
-                            <p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>
-                            <p class="card-text text-danger recipe-font">Ingredients missing: @Model[i].MissedIngredientCount</p>
+<div class="recipes main-color">
+    <div class="container bg-white" style="max-width: 900px;">
+        <h1 class="text-center mb-5">Suggested recipes</h1>
+
+        @for (int i = 0; i < Model.Length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 840px;">
+                    <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                @{
+                                    if (Model[i].MissedIngredientCount == 0)
+                                    {
+                                        <img class="position-absolute top-0 start-0" src="~/images/thumb-up.png" />
+                                    }
+                                }
+                                <img src="@Model[i].Image" class="img-fluid rounded-start align-self-center" alt="...">
+                            </div>
+                            <div class="col-md-8 ">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-4">@Model[i].Title</h5>
+                                    <p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>
+                                    <p class="card-text text-danger recipe-font">Ingredients missing: @Model[i].MissedIngredientCount</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-    }
-    else
-    {
-        <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 540px;">
-            <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
-                <div class="row g-0">
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">@Model[i].Title</h5>
-                            <p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>
-                            <p class="card-text text-danger recipe-font">Ingredients missing: @Model[i].MissedIngredientCount</p>
+            }
+            else
+            {
+                <div class="card mb-3 text-center mx-auto recipeItem" style="max-width: 840px;">
+                    <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
+                        <div class="row g-0">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-4">@Model[i].Title</h5>
+                                    <p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>
+                                    <p class="card-text text-danger recipe-font">Ingredients missing: @Model[i].MissedIngredientCount</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                @{
+                                    if (Model[i].MissedIngredientCount == 0)
+                                    {
+                                        <img class="position-absolute top-0 end-0" src="~/images/thumb-up.png" />
+                                    }
+                                }
+                                <img src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        @{
-                            if (Model[i].MissedIngredientCount == 0)
-                            {
-                                <img class="position-absolute top-0 end-0" src="~/images/thumb-up.png" />
-                            }
-                        }
-                        <img src="@Model[i].Image" class="img-fluid rounded-start" alt="...">
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-    }
-}
+            }
+        }
+    </div>
+</div>
+
+
 @*<a asp-action="Recipes" asp-controller="Skafferiet" asp-route-multipleid="@Model[0].Multiple">5 more</a>*@
 

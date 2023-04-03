@@ -9,4 +9,9 @@
 
 .recipeItem h5{
     color: black;
+    font-size: 1.8rem;
+}
+
+.recipes p{
+    font-size: 1.3rem;
 }
