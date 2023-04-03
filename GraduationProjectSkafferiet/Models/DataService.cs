@@ -74,7 +74,11 @@ namespace GraduationProjectSkafferiet.Models
                 Image = recipe.Image,
                 Servings = recipe.Servings,
                 ReadyInMinutes = recipe.ReadyInMinutes,
-                Instructions = recipe.Instructions.IsNullOrEmpty() ?  new List<string> { "No instructions found" } : Regex.Replace(recipe.Instructions, "<.*?>", string.Empty).Split(".").ToList()
+                Instructions = recipe.Instructions.IsNullOrEmpty() ? new List<string> { "No instructions found" } : Regex.Replace(recipe.Instructions, "<.*?>", string.Empty).Split(".").ToList(),
+                Vegetarian = recipe.Vegetarian,
+                Vegan = recipe.Vegan,
+                GlutenFree = recipe.GlutenFree,
+                DairyFree = recipe.DairyFree,
             };
 
             vm.Instructions.RemoveAll(instruction => string.IsNullOrWhiteSpace(instruction));

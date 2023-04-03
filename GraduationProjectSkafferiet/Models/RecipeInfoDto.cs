@@ -8,6 +8,10 @@
         public int Servings { get; set; }
         public int ReadyInMinutes { get; set; }
         public string? Instructions { get; set; }
+        public bool Vegetarian { get; set; }
+        public bool Vegan { get; set; }
+        public bool GlutenFree { get; set; }
+        public bool DairyFree { get; set; }
         public List<ExtendedIngredient> ExtendedIngredients { get; set; }
 
 

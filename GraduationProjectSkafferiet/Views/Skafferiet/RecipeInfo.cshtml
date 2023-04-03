@@ -13,9 +13,13 @@
 <div class="container mx-auto">
     <h1 class="mb-5 mt-5 SizeForTitle">@Model.Title <span class="SizeForTextInParenthesis">(@Model.Servings servings ready in @Model.ReadyInMinutes minutes)</span></h1>
     <div class="row">
-        
+
         <div class="col-md-6">
-            
+
+            <span class="badge text-bg-success" @(Model.Vegetarian ? "" : "hidden")>Vegetarian</span>
+            <span class="badge text-bg-success" @(Model.Vegan ? "" : "hidden")>Vegan</span>
+            <span class="badge text-bg-success" @(Model.GlutenFree ? "" : "hidden")>Gluten Free</span>
+            <span class="badge text-bg-success" @(Model.DairyFree ? "" : "hidden")>Dairy Free</span>
             <h4 class="mt-0 SizeForIngrTitle">You need to use the following ingredients</h4>
             <div class="list-group-item">
                 @foreach (var item in Model.Ingredients)
@@ -27,13 +31,13 @@
             <ol class="RecipeInfo">
                 @foreach (var item in Model.Instructions)
                 {
-                    <li class="mb-2 RecipeInfo SizeForIngrNInst" >@item</li>
+                    <li class="mb-2 RecipeInfo SizeForIngrNInst">@item</li>
                 }
             </ol>
         </div>
         <div class="col-md-6 imgDiv">
-            <img src="@Model.Image" class="ImgInRecipe"/>
+            <img src="@Model.Image" class="ImgInRecipe" />
         </div>
     </div>
-    </div>
+</div>
 
