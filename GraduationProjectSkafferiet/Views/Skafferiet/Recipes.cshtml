@@ -9,10 +9,10 @@
     </nav>
 }
 
+   <div style="position: fixed; top: 200px; left: 0">   <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_dlihd9az.json" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay></lottie-player> </div>
 <div class="recipes main-color">
     <div class="container bg-white" style="max-width: 900px;">
         <h1 class="text-center mb-5">Suggested recipes</h1>
-
         @for (int i = 0; i < Model.Length; i++)
         {
             if (i % 2 == 0)
@@ -69,6 +69,11 @@
     </div>
 </div>
 
+
+@section scripts{
+    <script src="https://unpkg.com/@("@lottiefiles")/lottie-player@latest/dist/lottie-player.js"></script>
+
+}
 
 @*<a asp-action="Recipes" asp-controller="Skafferiet" asp-route-multipleid="@Model[0].Multiple">5 more</a>*@
 
