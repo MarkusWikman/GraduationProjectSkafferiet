@@ -11,7 +11,9 @@
 }
 
 <div class="container mx-auto">
-    <h1 class="mb-5 mt-5 SizeForTitle">@Model.Title <span class="SizeForTextInParenthesis">(@Model.Servings servings ready in @Model.ReadyInMinutes minutes)</span></h1>
+    <h1 class="mb-5 mt-5 SizeForTitle">@Model.Title 
+        <br/>
+        <span class="SizeForTextInParenthesis">(@Model.Servings serving@(Model.Servings > 1 ? "s" :"") ready in @Model.ReadyInMinutes minutes)</span></h1>
     <div class="row">
 
         <div class="col-md-6">
