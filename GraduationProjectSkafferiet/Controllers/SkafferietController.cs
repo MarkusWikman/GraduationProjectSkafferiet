@@ -2,8 +2,10 @@
 using GraduationProjectSkafferiet.Views.Skafferiet;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace GraduationProjectSkafferiet.Controllers
 {
@@ -11,11 +13,12 @@ namespace GraduationProjectSkafferiet.Controllers
     {
         DataService dataService;
         AccountService accountService;
-        ApplicationUser applicationUser;
-        public SkafferietController(DataService dataService, AccountService accountService)
+        UserManager<ApplicationUser> userManager;
+        public SkafferietController(DataService dataService, AccountService accountService, UserManager<ApplicationUser> userManager)
         {
             this.dataService = dataService;
             this.accountService = accountService;
+            this.userManager = userManager;
         }
 
         [HttpGet("")]
@@ -80,6 +83,9 @@ namespace GraduationProjectSkafferiet.Controllers
         {
             model = await dataService.GetIngredientsAndInventoryAsync(model);
             model.IsIngredientChosen = model.Inventory.Length == 0 ? false : true;
+            var userId = userManager.GetUserId(HttpContext.User);
+            ApplicationUser user = userManager.FindByIdAsync(userId).Result;
+            model.Name = user.FirstName;
             return View(model);
         }
 
