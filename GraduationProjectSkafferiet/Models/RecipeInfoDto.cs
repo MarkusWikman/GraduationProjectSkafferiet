@@ -14,10 +14,25 @@
         public bool DairyFree { get; set; }
         public List<ExtendedIngredient> ExtendedIngredients { get; set; }
 
+        public Nutrition Nutrition { get; set; } = new Nutrition();
+
 
     }
     public class ExtendedIngredient
     {
         public string Original { get; set; }
     }
+
+    public class Nutrition
+    {
+        public List<Nutrient> Nutrients { get; set; } = new List<Nutrient> { };
+
+    }
+
+    public class Nutrient {
+        public string Name { get; set; }
+        public double Amount { get; set; }
+        public string Unit { get; set; }
+    }
+
 }

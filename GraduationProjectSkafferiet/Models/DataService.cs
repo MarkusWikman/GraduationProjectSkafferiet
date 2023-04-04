@@ -61,7 +61,7 @@ namespace GraduationProjectSkafferiet.Models
         internal async Task<RecipeInfoVM> GetRecipeByIdAsync(int id)
         {
 
-            var url = $"https://api.spoonacular.com/recipes/{id}/information?&includeNutrition=false&apiKey={API_KEY}";
+            var url = $"https://api.spoonacular.com/recipes/{id}/information?&includeNutrition=true&apiKey={API_KEY}";
 
             HttpClient httpClient = clientFactory.CreateClient();
 
@@ -81,6 +81,7 @@ namespace GraduationProjectSkafferiet.Models
                 DairyFree = recipe.DairyFree,
             };
 
+
             vm.Instructions.RemoveAll(instruction => string.IsNullOrWhiteSpace(instruction));
 
             for (int i = 0; i < vm.Instructions.Count; i++)
@@ -94,6 +95,28 @@ namespace GraduationProjectSkafferiet.Models
             {
                 vm.Ingredients.Add(item.Original);
             }
+
+            
+            foreach (var item in recipe.Nutrition.Nutrients)
+            {
+                RecipeInfoVM.Nutrient temp = new RecipeInfoVM.Nutrient();
+
+                if (item.Name == "Calories" || item.Name == "Carbohydrates" || item.Name == "Fat" || item.Name == "Protein")
+                {
+                temp.Name = item.Name;
+                temp.Amount = item.Amount;
+                temp.Unit = item.Unit;
+
+                vm.Nutrients.Add(temp);
+
+                }
+
+
+                
+
+            }
+
+
 
             return vm;
 
