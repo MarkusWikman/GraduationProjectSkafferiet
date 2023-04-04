@@ -13,6 +13,7 @@
                 </div>
                 @*<img class="mb-4" src="~/images/user-solid.svg" alt="" width="72" height="57">*@
                 <h1 class="h3 mb-4 mt-4 fw-normal">Please sign in </h1>
+                <div class="form-container" style="margin-top: 1cm;">
                 <div class="form-floating">
 
                     <input class="form-control" asp-for="Email" />
@@ -21,15 +22,16 @@
                 </div>
                 <div class="form-floating">
                     <input class="form-control" asp-for="Password" />
-                    <label asp-for="Password"> </label>
+                    <label asp-for="Password"> </label> 
                     <span asp-validation-for="Password"></span>
+                </div>
                 </div>
                 @*<div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>*@
-                <div class="mt-5 d-flex justify-content-around">
+                <div class="mt-4 d-flex justify-content-around">
                     <input class="btn btn-primary" type="submit" value="Log in" style="width: 35%" />
                     <a asp-action="Index" class="btn btn-success" style="width: 35%">Register</a>
                 </div>
