@@ -17,8 +17,8 @@ namespace GraduationProjectSkafferiet.Models
 {
     public class DataService
     {
-        const string API_KEY = "5de75e27041d4a679843456a51cb8637";
-        //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
+        //const string API_KEY = "5de75e27041d4a679843456a51cb8637";
+        const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
         //const string API_KEY = "f743dfc8ba8f464ba8d1c61644153b41";
 
         IHttpClientFactory clientFactory;
@@ -143,7 +143,7 @@ namespace GraduationProjectSkafferiet.Models
             await context.SaveChangesAsync();
         }
 
-        internal async Task<HomeVM> GetIngredientsAndInventoryAsync(HomeVM model)
+        internal async Task<HomeVM> GetIngredientsAndInventoryAsync(string checkState)
         {
             ////Demonstration av hur man konverterar csv till array
             //var reader = new StreamReader(File.OpenRead("C:\\Users\\Alexander\\source\\repos\\GraduationProjectSkafferiet\\GraduationProjectSkafferiet\\top-1k-ingredients.csv"));
@@ -175,6 +175,8 @@ namespace GraduationProjectSkafferiet.Models
                     Text = filteredIngredientsList[i],
                 };
             }
+            var model = new HomeVM();
+            model.IsAllChosen = checkState == "checked";
             model.IngredientsList = ingredients;
 
 

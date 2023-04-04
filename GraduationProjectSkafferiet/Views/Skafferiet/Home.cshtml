@@ -21,10 +21,18 @@
 
     @if (Model.IsIngredientChosen)
     {
-    <form class="checkButtonForm">
-        <button class="checkButton" sp-controller="Skafferiet" type="submit" asp-action="ChangeCheckedTrue">Check all</button>
-        <button class="unCheckButton"  asp-controller="Skafferiet" type="submit" asp-action="ChangeCheckedFalse">Uncheck all</button>
-    </form>
+        @if(Model.IsAllChosen)
+        {
+            <form method="get" class="checkButtonForm" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="unchecked">
+                <input class="unCheckButton"  type="submit" value="Uncheck all" />
+                </form>
+        }
+        else
+        {
+            <form method="get" class="checkButtonForm" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="checked">
+                <input class="checkButton" type="submit" value="Check all" />
+            </form>
+        }
         <div id="inventoryDiv">
 
             <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">

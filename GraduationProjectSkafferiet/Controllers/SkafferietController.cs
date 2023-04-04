@@ -78,10 +78,11 @@ namespace GraduationProjectSkafferiet.Controllers
         }
 
         [Authorize]
-        [HttpGet("/Home")]
-        public async Task<IActionResult> Home(HomeVM model)
+        [HttpGet("/Home/{checkState}")]
+        [HttpGet("Home")]
+        public async Task<IActionResult> Home(string checkState)
         {
-            model = await dataService.GetIngredientsAndInventoryAsync(model);
+            var model = await dataService.GetIngredientsAndInventoryAsync(checkState);
             model.IsIngredientChosen = model.Inventory.Length == 0 ? false : true;
             var userId = userManager.GetUserId(HttpContext.User);
             ApplicationUser user = userManager.FindByIdAsync(userId).Result;
@@ -100,18 +101,16 @@ namespace GraduationProjectSkafferiet.Controllers
             await dataService.AddAsync(model);
             return RedirectToAction(nameof(Index));
         }
-        [HttpGet("/ChangeCheckedTrue")]
-        public IActionResult ChangeCheckedTrue(HomeVM model)
-        {
-            model.IsAllChosen = true;
-            return RedirectToAction(nameof(Home), model);
-        }
-        [HttpGet("/ChangeCheckedFalse")]
-        public IActionResult ChangeCheckedFalse(HomeVM model)
-        {
-            model.IsAllChosen = false;
-            return RedirectToAction(nameof(Home), model);
-        }
+        //[HttpGet("/ChangeCheckedTrue")]
+        //public IActionResult ChangeCheckedTrue()
+        //{
+        //    return RedirectToAction(nameof(Home), );
+        //}
+        //[HttpGet("/ChangeCheckedFalse")]
+        //public IActionResult ChangeCheckedFalse()
+        //{
+        //    return RedirectToAction(nameof(Home), model);
+        //}
 
 
         [Authorize]
