@@ -11,7 +11,9 @@
 }
 
 <div class="container mx-auto">
-    <h1 class="mb-5 mt-5 SizeForTitle">@Model.Title <span class="SizeForTextInParenthesis">(@Model.Servings servings ready in @Model.ReadyInMinutes minutes)</span></h1>
+    <h1 class="mb-5 mt-5 SizeForTitle">@Model.Title 
+        <br/>
+        <span class="SizeForTextInParenthesis">(@Model.Servings serving@(Model.Servings > 1 ? "s" :"") ready in @Model.ReadyInMinutes minutes)</span></h1>
     <div class="row">
 
         <div class="col-md-6">
@@ -20,7 +22,7 @@
             <span class="badge text-bg-success" @(Model.Vegan ? "" : "hidden")>Vegan</span>
             <span class="badge text-bg-success" @(Model.GlutenFree ? "" : "hidden")>Gluten Free</span>
             <span class="badge text-bg-success" @(Model.DairyFree ? "" : "hidden")>Dairy Free</span>
-            <h4 class="mt-0 SizeForIngrTitle">You need to use the following ingredients</h4>
+            <h4 class="mt-0 SizeForIngrTitle">Ingredients</h4>
             <div class="list-group-item">
                 @foreach (var item in Model.Ingredients)
                 {

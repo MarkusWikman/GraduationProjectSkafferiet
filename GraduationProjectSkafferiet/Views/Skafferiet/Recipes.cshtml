@@ -9,7 +9,7 @@
     </nav>
 }
 
-   <div style="position: fixed; top: 200px; left: 0">   <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_dlihd9az.json" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay></lottie-player> </div>
+<div style="position: fixed; top: 200px; left: 0">   <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_dlihd9az.json" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay></lottie-player> </div>
 <div class="recipes main-color">
     <div class="container bg-white" style="max-width: 900px;">
         <h1 class="text-center mb-5">Suggested recipes</h1>
@@ -30,10 +30,22 @@
                                 <img src="@Model[i].Image" class="img-fluid rounded-start align-self-center" alt="...">
                             </div>
                             <div class="col-md-8 ">
-                                <div class="card-body">
+                                <div class="card-body recipes">
                                     <h5 class="card-title mb-4">@Model[i].Title</h5>
-                                    <p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>
-                                    <p class="card-text text-danger recipe-font">Ingredients missing: @Model[i].MissedIngredientCount</p>
+                                    @*<p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>*@
+                                    @{
+                                        if (Model[i].MissedIngredientCount == 0)
+                                        {
+                                            <p class="card-text recipe-font" style="color: #689c43">Perfect match</p>
+                                        }
+                                        else if (Model[i].MissedIngredientCount >= 1)
+                                        {
+                                            <p class="card-text recipe-font">
+                                                You need additional @Model[i].MissedIngredientCount ingredient@(Model[i].MissedIngredientCount > 1 ? "s" :"" )
+                                                </p >
+                                        }
+                                    }
+                                    @*<p class="card-text recipe-font">You need additional @Model[i].MissedIngredientCount ingredients</p>*@
                                 </div>
                             </div>
                         </div>
@@ -46,10 +58,22 @@
                     <a class="discrete-link" asp-action="RecipeInfo" asp-route-id="@Model[i].Id">
                         <div class="row g-0">
                             <div class="col-md-8">
-                                <div class="card-body">
+                                <div class="card-body recipes">
                                     <h5 class="card-title mb-4">@Model[i].Title</h5>
-                                    <p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>
-                                    <p class="card-text text-danger recipe-font">Ingredients missing: @Model[i].MissedIngredientCount</p>
+                                    @*<p class="card-text hot-green recipe-font">Ingredients totally: @Model[i].IngredientsTotally</p>*@
+                                    @{
+                                        if (Model[i].MissedIngredientCount == 0)
+                                        {
+                                            <p class="card-text recipe-font" style="color: #689c43">Perfect match</p>
+                                        }
+                                        else if (Model[i].MissedIngredientCount >= 1)
+                                        {
+                                            <p class="card-text recipe-font">
+                                                You need additional @Model[i].MissedIngredientCount ingredient@(Model[i].MissedIngredientCount > 1 ? "s" : "")
+                                            </p>
+                                        }
+                                    }
+                                    @*<p class="card-text recipe-font">You need additional @Model[i].MissedIngredientCount ingredients</p>*@
                                 </div>
                             </div>
                             <div class="col-md-4">
