@@ -32,7 +32,7 @@
     height: 45px;
     border-radius: 10px;
     margin-top: 10px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 
 }
 .AIngredientStyle {
@@ -104,4 +104,17 @@
 
 form#inventory{
     min-width: 600px;
+}
+.checkButtonForm {
+    margin-left: 165px;
+    margin-bottom: 50px;
+    margin-top: -5px;
+}
+.unCheckButton {
+    border-radius: 25px;
+    font-family: 'montserrat-variablefont_wght';
+}
+.checkButton {
+    border-radius: 25px;
+    font-family: 'montserrat-variablefont_wght';
 }

@@ -21,10 +21,16 @@
 
     @if (Model.IsIngredientChosen)
     {
+    <form class="checkButtonForm">
+        <button class="checkButton" sp-controller="Skafferiet" type="submit" asp-action="ChangeCheckedTrue">Check all</button>
+        <button class="unCheckButton"  asp-controller="Skafferiet" type="submit" asp-action="ChangeCheckedFalse">Uncheck all</button>
+    </form>
         <div id="inventoryDiv">
 
             <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">
                 <ul class="list-unstyled">
+
+
                     @foreach (var item in Model.Inventory)
                     {
                         <li>
@@ -34,7 +40,7 @@
                                     <div class="d-inline-block align-middle checkboxes">
                                         <label for="@item.Value" class="labelStyle d-inline-block align-middle">
                                             @item.Value
-                                            <input type="checkbox" class="InputStyle" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked="" />
+                                            <input type="checkbox" class="InputStyle" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" @(Model.IsAllChosen ? "checked" : "") />
                                         </label>
                                     </div>
                                 </div>
@@ -45,14 +51,14 @@
             </form>
         </div>
 
-        }
-        else
-        {
-            <div>
-                <p class="PantryEmptyStyle">Your pantry is empty!</p>
-            </div>
-        }
-    </div>
+    }
+    else
+    {
+        <div>
+            <p class="PantryEmptyStyle">Your pantry is empty!</p>
+        </div>
+    }
+</div>
 
 
 <script>
@@ -62,6 +68,21 @@
             event.preventDefault();
         }
     }
+
+                //var checkboxes = document.querySelectorAll("input [type = 'checkbox']");
+                //console.log(checkboxes);
+                //function checkAll(myCheckbox){
+                //    if(myCheckbox.checked == true){
+                //        checkboxes.forEach(function(checkbox){
+                //            checkbox.checked = true;
+                //        });
+                //    }
+                //    else{
+                //        checkboxes.forEach(function(checkbox){
+                //            checkbox.checked = false;
+                //        })
+                //    }
+                //}
 </script>
 
 
