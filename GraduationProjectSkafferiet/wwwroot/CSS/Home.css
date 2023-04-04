@@ -97,3 +97,6 @@
     height: 150px;
 }
 
+form#inventory{
+    min-width: 600px;
+}
