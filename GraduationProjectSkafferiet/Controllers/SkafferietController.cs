@@ -11,6 +11,7 @@ namespace GraduationProjectSkafferiet.Controllers
     {
         DataService dataService;
         AccountService accountService;
+        ApplicationUser applicationUser;
         public SkafferietController(DataService dataService, AccountService accountService)
         {
             this.dataService = dataService;

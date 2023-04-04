@@ -15,5 +15,7 @@ namespace GraduationProjectSkafferiet.Views.Skafferiet
 
         public bool IsIngredientChosen { get; set; }
 
+        public string Name { get; set; }
+
     }
 }
