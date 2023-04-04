@@ -20,7 +20,7 @@
             <span class="badge text-bg-success" @(Model.Vegan ? "" : "hidden")>Vegan</span>
             <span class="badge text-bg-success" @(Model.GlutenFree ? "" : "hidden")>Gluten Free</span>
             <span class="badge text-bg-success" @(Model.DairyFree ? "" : "hidden")>Dairy Free</span>
-            <h4 class="mt-0 SizeForIngrTitle">You need to use the following ingredients</h4>
+            <h4 class="mt-0 SizeForIngrTitle">Ingredients</h4>
             <div class="list-group-item">
                 @foreach (var item in Model.Ingredients)
                 {
