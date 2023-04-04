@@ -11,6 +11,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace GraduationProjectSkafferiet.Models
 {
@@ -22,7 +23,7 @@ namespace GraduationProjectSkafferiet.Models
 
         IHttpClientFactory clientFactory;
         private readonly ApplicationContext context;
-        UserManager<ApplicationUser> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         readonly string userId;
         public DataService(IHttpClientFactory clientFactory, ApplicationContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor accessor) // Kräver följande i program: builder.Services.AddHttpClient();
         {
@@ -165,13 +166,13 @@ namespace GraduationProjectSkafferiet.Models
                 };
             }
             model.Inventory = inventoryIngredients;
+
             return model;
         }
 
         //Delete
         public async Task DeleteIngredientAsync(string ingredientName)
         {
-
 
             var q = context.Ingredients.Where(i => i.ApplicationUserId == userId).SingleOrDefault(d => d.IngredientName == ingredientName);
             context.Ingredients.Remove(q);

@@ -18,13 +18,13 @@ namespace GraduationProjectSkafferiet.Models
             this.signInManager = signInManager;
             this.roleManager = roleManager;
         }
-
         public async Task<string> TryRegisterAsync(IndexVM viewModel)
         {
             var user = new ApplicationUser
             {
                 UserName = viewModel.Email,
-                Email = viewModel.Email
+                Email = viewModel.Email,
+                FirstName = viewModel.FirstName,
             };
 
             IdentityResult result = await
