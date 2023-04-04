@@ -18,10 +18,10 @@
 
         <div class="col-md-6">
 
-            <span class="badge text-bg-success" @(Model.Vegetarian ? "" : "hidden")>Vegetarian</span>
-            <span class="badge text-bg-success" @(Model.Vegan ? "" : "hidden")>Vegan</span>
-            <span class="badge text-bg-success" @(Model.GlutenFree ? "" : "hidden")>Gluten Free</span>
-            <span class="badge text-bg-success" @(Model.DairyFree ? "" : "hidden")>Dairy Free</span>
+            <span class="badge text-bg-success mb-3" @(Model.Vegetarian ? "" : "hidden")>Vegetarian</span>
+            <span class="badge text-bg-success mb-3" @(Model.Vegan ? "" : "hidden")>Vegan</span>
+            <span class="badge text-bg-success mb-3" @(Model.GlutenFree ? "" : "hidden")>Gluten Free</span>
+            <span class="badge text-bg-success mb-3" @(Model.DairyFree ? "" : "hidden")>Dairy Free</span>
             <h4 class="mt-0 SizeForIngrTitle">Ingredients</h4>
             <div class="list-group-item">
                 @foreach (var item in Model.Ingredients)
