@@ -17,9 +17,9 @@ namespace GraduationProjectSkafferiet.Models
 {
     public class DataService
     {
-        //const string API_KEY = "5de75e27041d4a679843456a51cb8637";
+        const string API_KEY = "5de75e27041d4a679843456a51cb8637";
         //const string API_KEY = "9fc1e7bd34df46aa8a7b9f09e0ca5f4e";
-        const string API_KEY = "f743dfc8ba8f464ba8d1c61644153b41";
+        //const string API_KEY = "f743dfc8ba8f464ba8d1c61644153b41";
 
         IHttpClientFactory clientFactory;
         private readonly ApplicationContext context;
@@ -62,7 +62,7 @@ namespace GraduationProjectSkafferiet.Models
         internal async Task<RecipeInfoVM> GetRecipeByIdAsync(int id)
         {
 
-            var url = $"https://api.spoonacular.com/recipes/{id}/information?&includeNutrition=false&apiKey={API_KEY}";
+            var url = $"https://api.spoonacular.com/recipes/{id}/information?&includeNutrition=true&apiKey={API_KEY}";
 
             HttpClient httpClient = clientFactory.CreateClient();
 
@@ -82,6 +82,7 @@ namespace GraduationProjectSkafferiet.Models
                 DairyFree = recipe.DairyFree,
             };
 
+
             vm.Instructions.RemoveAll(instruction => string.IsNullOrWhiteSpace(instruction));
 
             for (int i = 0; i < vm.Instructions.Count; i++)
@@ -95,6 +96,28 @@ namespace GraduationProjectSkafferiet.Models
             {
                 vm.Ingredients.Add(item.Original);
             }
+
+            
+            foreach (var item in recipe.Nutrition.Nutrients)
+            {
+                RecipeInfoVM.Nutrient temp = new RecipeInfoVM.Nutrient();
+
+                if (item.Name == "Calories" || item.Name == "Carbohydrates" || item.Name == "Fat" || item.Name == "Protein")
+                {
+                temp.Name = item.Name;
+                temp.Amount = item.Amount;
+                temp.Unit = item.Unit;
+
+                vm.Nutrients.Add(temp);
+
+                }
+
+
+                
+
+            }
+
+
 
             return vm;
 

@@ -12,5 +12,19 @@
         public bool Vegan { get; set; }
         public bool GlutenFree { get; set; }
         public bool DairyFree { get; set; }
+
+        public List<Nutrient> Nutrients { get; set; } = new List<Nutrient> { };
+
+        public class Nutrient
+        {
+            public string Name { get; set; }
+            public double Amount { get; set; }
+            public string Unit { get; set; }
+
+        }
+
+       
     }
+
+
 }
