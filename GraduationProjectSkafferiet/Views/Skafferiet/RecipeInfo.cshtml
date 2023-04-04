@@ -39,25 +39,38 @@
         </div>
         <div class="col-md-6 imgDiv">
             <img src="@Model.Image" class="ImgInRecipe" />
-            <div class="mt-2 SizeForIngrNInst">
-                @Model.Nutrients[0].Name
+            <div id="pieAndFactsDiv"class="d-flex justify-content-around mt-4">
+            <div id="pieDiv" class="mt-2">
+                <canvas id="can" width="200" height="200" />
+            </div>
+            <div id ="factsDiv" class="mt-5 pt-3 SizeForNutrients">
+
+            <div>
+                @Model.Nutrients[0].Name:
                 @Model.Nutrients[0].Amount
                 @Model.Nutrients[0].Unit
+            </div>
 
-                @Model.Nutrients[1].Name
+            <div>
+                @Model.Nutrients[1].Name:
                 @Model.Nutrients[1].Amount
                 @Model.Nutrients[1].Unit
+             </div>
 
-                @Model.Nutrients[2].Name
+             <div>
+                @Model.Nutrients[2].Name:
                 @Model.Nutrients[2].Amount
                 @Model.Nutrients[2].Unit
+             </div>
 
-                @Model.Nutrients[3].Name
+             <div>
+                @Model.Nutrients[3].Name:
                 @Model.Nutrients[3].Amount
                 @Model.Nutrients[3].Unit
+             </div>
+
             </div>
-            <div style="display: flex; justify-content: center; align-items: center;" class="mt-2">
-                <canvas id="can" width="200" height="200" />
+            
             </div>
         </div>
     </div>
