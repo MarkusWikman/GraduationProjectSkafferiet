@@ -6,12 +6,12 @@
         <h2 class="fw-normal">By signing up you will be able to add your ingredients and search for recipes.</h2>
     </div>
 
-    <lottie-player class="mx-auto" src="https://assets8.lottiefiles.com/packages/lf20_TmewUx.json" background="transparent" speed="0.5" style="width: 300px; height: 300px;" autoplay></lottie-player>
 
     <div class="row">
-        <div class="col-3 align-self-center">
+        <lottie-player class="mx-auto align-self-center" src="https://assets8.lottiefiles.com/packages/lf20_TmewUx.json" background="transparent" speed="0.5" style="width: 300px; height: 300px;" autoplay></lottie-player>
+        @*<div class="col-3 align-self-center">
             <img src="~/images/fork-removebg-preview.png" />
-        </div>
+        </div>*@
 
 
         <div class="register-window mx-auto my-5 p-4 container col-6">
@@ -55,9 +55,9 @@
 
 
 
-                <span class="text-danger"asp-validation-for="FirstName"></span>
-                <span class="text-danger"asp-validation-for="LastName"></span>
-                <span class="text-danger"asp-validation-for="Email"></span>
+                <span class="text-danger" asp-validation-for="FirstName"></span>
+                <span class="text-danger" asp-validation-for="LastName"></span>
+                <span class="text-danger" asp-validation-for="Email"></span>
                 <span class="text-danger" asp-validation-for="Password"></span>
                 <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
             </form>
@@ -77,7 +77,7 @@
     <script src="~/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://unpkg.com/@("@lottiefiles")/lottie-player@latest/dist/lottie-player.js"></script>
-    
+
 }
 @section navbutton{
     <a class="btn btn-outline-primary" asp-controller="Skafferiet" asp-action="Login">Log in</a>
