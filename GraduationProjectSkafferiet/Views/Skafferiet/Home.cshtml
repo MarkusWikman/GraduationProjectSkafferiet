@@ -70,72 +70,75 @@
 </div>
 
 
-<script>
-    let checkBoxes = document.querySelectorAll("input[type='checkbox']");
-    let checkButton = document.getElementById('checkButton')
-    let shouldCheckAll = false;
+@section scripts{
+    <script>
+        let checkBoxes = document.querySelectorAll("input[type='checkbox']");
+        let checkButton = document.getElementById('checkButton')
+        let shouldCheckAll = false;
 
-    function clickAndDisable(link) {
-        // disable subsequent clicks
-        link.onclick = function (event) {
-            event.preventDefault();
+        function clickAndDisable(link) {
+            // disable subsequent clicks
+            link.onclick = function (event) {
+                event.preventDefault();
+            }
         }
-    }
-    function checkOrUncheck() {
-        checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
-        checkBoxes.forEach(c => c.checked = shouldCheckAll)
-        shouldCheckAll = !shouldCheckAll;
+        function checkOrUncheck() {
+            checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
+            checkBoxes.forEach(c => c.checked = shouldCheckAll)
+            shouldCheckAll = !shouldCheckAll;
+            anyChecked()
+                ? getRecipesBtn.removeAttribute('disabled')
+                : getRecipesBtn.setAttribute('disabled', '')
+        }
+
+
+        // get a list of the checkboxes and spread it into an array
+        // so later you can use Array methods on it
+        const checkboxes = [...document.querySelectorAll('input[type=checkbox]')]
+        const getRecipesBtn = document.getElementById('getRecipesBtn')
+
+        // function that tells you if any checkboxes in
+        // the above list are checked
+        function anyChecked() {
+            // this is where we're using an array method
+            // Array.prototype.some
+            return checkboxes.some(x => x.checked)
+        }
+
+        function allChecked() {
+            return checkboxes.every(x => x.checked)
+        }
+
+        // to every single checkbox, add a click listener
+        // again, using an Array method
+        // Array.prototype.forEach
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                // when any checkbox is clicked,
+                // check if there's any checked checkboxes
+                if (allChecked()) {
+                    getRecipesBtn.removeAttribute('disabled')
+                    checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
+                    shouldCheckAll = !shouldCheckAll;
+                }
+                else if (anyChecked()) {
+                    getRecipesBtn.removeAttribute('disabled')
+                }
+                else {
+                    getRecipesBtn.setAttribute('disabled', '')
+                    checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
+                    shouldCheckAll = !shouldCheckAll;
+                }
+            })
+        })
+
+        // do the same thing initially as well
+        // to account for initially checked checkboxes
         anyChecked()
             ? getRecipesBtn.removeAttribute('disabled')
             : getRecipesBtn.setAttribute('disabled', '')
-    }
+    </script>
+}
 
-
-    // get a list of the checkboxes and spread it into an array
-    // so later you can use Array methods on it
-    const checkboxes = [...document.querySelectorAll('input[type=checkbox]')]
-    const getRecipesBtn = document.getElementById('getRecipesBtn')
-
-    // function that tells you if any checkboxes in
-    // the above list are checked
-    function anyChecked() {
-        // this is where we're using an array method
-        // Array.prototype.some
-        return checkboxes.some(x => x.checked)
-    }
-
-    function allChecked(){
-        return checkboxes.every(x => x.checked)
-    }
-
-    // to every single checkbox, add a click listener
-    // again, using an Array method
-    // Array.prototype.forEach
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('click', () => {
-            // when any checkbox is clicked,
-            // check if there's any checked checkboxes
-            if(allChecked()){
-                getRecipesBtn.removeAttribute('disabled')
-                checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
-                shouldCheckAll = !shouldCheckAll;
-            }
-            else if (anyChecked()) {
-                getRecipesBtn.removeAttribute('disabled')
-            }
-            else {
-                getRecipesBtn.setAttribute('disabled', '')
-                checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
-                shouldCheckAll = !shouldCheckAll;
-            }
-        })
-    })
-
-    // do the same thing initially as well
-    // to account for initially checked checkboxes
-    anyChecked()
-        ? getRecipesBtn.removeAttribute('disabled')
-        : getRecipesBtn.setAttribute('disabled', '')
-</script>
 
 
