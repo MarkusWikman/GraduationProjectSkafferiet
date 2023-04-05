@@ -13,10 +13,10 @@
     <form id="inventory" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="">
         <label class="AIngredientStyle" for="ingredients">Add to pantry:</label>
         <br />
-        <select class="selectStyle" asp-for="AddIngredient" asp-items="Model.IngredientsList"></select>
+        <select class="selectStyle" asp-for="AddIngredient" asp-items="Model.IngredientsList" autofocus></select>
 
         <button form="inventory" class="btn btn-primary AddIngredientStyle" id="addIngredientButton" onclick="document.getElementById('addIngredientButton').disabled = true ;document.getElementById('inventory').submit(); ">Add Ingredient</button>
-        <button type="submit" form="getRecipes" class="btn btn-success GetRecipesStyle" @(!Model.IsIngredientChosen ? "disabled" : "")>Get Recipes</button>
+        <button id="getRecipesBtn" type="submit" form="getRecipes" class="btn btn-success GetRecipesStyle" @(!Model.IsIngredientChosen ? "disabled" : "")>Get Recipes</button>
     </form>
 
     @if (Model.IsIngredientChosen)
@@ -86,19 +86,40 @@
         shouldCheckAll = !shouldCheckAll;
     }
 
-                                //console.log(checkboxes);
-                                //function checkAll(myCheckbox){
-                                //    if(myCheckbox.checked == true){
-                                //        checkboxes.forEach(function(checkbox){
-                                //            checkbox.checked = true;
-                                //        });
-                                //    }
-                                //    else{
-                                //        checkboxes.forEach(function(checkbox){
-                                //            checkbox.checked = false;
-                                //        })
-                                //    }
-                                //}
+    
+    // get a list of the checkboxes and spread it into an array
+    // so later you can use Array methods on it
+    const checkboxes = [...document.querySelectorAll('input[type=checkbox]')]
+    const getRecipesBtn = document.getElementById('getRecipesBtn')
+
+    // function that tells you if any checkboxes in
+    // the above list are checked
+    function anyChecked() {
+        // this is where we're using an array method
+        // Array.prototype.some
+        return checkboxes.some(x => x.checked)
+    }
+
+    // to every single checkbox, add a click listener
+    // again, using an Array method
+    // Array.prototype.forEach
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', () => {
+            // when any checkbox is clicked,
+            // check if there's any checked checkboxes
+            anyChecked()
+                // if so, enable the button
+                ? getRecipesBtn.removeAttribute('disabled')
+                // otherwise, disable it
+                : getRecipesBtn.setAttribute('disabled', '')
+        })
+    })
+
+    // do the same thing initially as well
+    // to account for initially checked checkboxes
+    anyChecked()
+        ? getRecipesBtn.removeAttribute('disabled')
+        : getRecipesBtn.setAttribute('disabled', '')
 </script>
 
 
