@@ -106,15 +106,21 @@ form#inventory{
     min-width: 600px;
 }
 .checkButtonForm {
-    margin-left: 165px;
+    margin-left: 195px;
     margin-bottom: 50px;
     margin-top: -5px;
 }
 .unCheckButton {
     border-radius: 25px;
     font-family: 'montserrat-variablefont_wght';
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
 }
 .checkButton {
     border-radius: 25px;
     font-family: 'montserrat-variablefont_wght';
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
 }

@@ -78,11 +78,10 @@ namespace GraduationProjectSkafferiet.Controllers
         }
 
         [Authorize]
-        [HttpGet("/Home/{checkState}")]
         [HttpGet("Home")]
-        public async Task<IActionResult> Home(string checkState)
+        public async Task<IActionResult> Home()
         {
-            var model = await dataService.GetIngredientsAndInventoryAsync(checkState);
+            var model = await dataService.GetIngredientsAndInventoryAsync();
             model.IsIngredientChosen = model.Inventory.Length == 0 ? false : true;
             var userId = userManager.GetUserId(HttpContext.User);
             ApplicationUser user = userManager.FindByIdAsync(userId).Result;
