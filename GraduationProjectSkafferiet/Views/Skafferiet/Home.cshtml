@@ -10,7 +10,7 @@
     <br />
     <h3 class="WelcomeBackStyle">Welcome back @Model.Name!</h3>
 
-    <form id="inventory" asp-controller="Skafferiet" asp-action="Home">
+    <form id="inventory" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="">
         <label class="AIngredientStyle" for="ingredients">Add to pantry:</label>
         <br />
         <select class="selectStyle" asp-for="AddIngredient" asp-items="Model.IngredientsList" autofocus></select>
@@ -21,18 +21,19 @@
 
     @if (Model.IsIngredientChosen)
     {
-        @if(Model.IsAllChosen)
-        {
-            <form method="get" class="checkButtonForm" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="unchecked">
-                <input class="unCheckButton"  type="submit" value="Uncheck all" />
-                </form>
-        }
-        else
-        {
-            <form method="get" class="checkButtonForm" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="checked">
-                <input class="checkButton" type="submit" value="Check all" />
-            </form>
-        }
+        @*        @if(Model.IsAllChosen)
+    {
+    <form method="get" class="checkButtonForm" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="unchecked">
+    <input class="unCheckButton"  type="submit" value="Uncheck all" />
+    </form>
+    }
+    else
+    {
+    <form method="get" class="checkButtonForm" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="checked">
+    <input class="checkButton" type="submit" value="Check all" />
+    </form>
+    }*@
+        <button class="checkButton checkButtonForm" id="checkButton" onclick="checkOrUncheck()">Uncheck all</button>
         <div id="inventoryDiv">
 
             <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">
@@ -48,7 +49,7 @@
                                     <div class="d-inline-block align-middle checkboxes">
                                         <label for="@item.Value" class="labelStyle d-inline-block align-middle">
                                             @item.Value
-                                            <input type="checkbox" class="InputStyle" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" @(Model.IsAllChosen ? "checked" : "") />
+                                            <input type="checkbox" class="InputStyle" name="@nameof(HomeVM.SelectedIngredients)" value="@item.Value" id="@item.Value" checked />
                                         </label>
                                     </div>
                                 </div>
@@ -70,14 +71,26 @@
 
 
 <script>
+    let checkBoxes = document.querySelectorAll("input[type='checkbox']");
+    let checkButton = document.getElementById('checkButton')
+    let shouldCheckAll = false;
+
     function clickAndDisable(link) {
         // disable subsequent clicks
         link.onclick = function (event) {
             event.preventDefault();
         }
     }
+    function checkOrUncheck() {
+        checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Uncheck all" : checkButton.innerText = "Check all"
+        checkBoxes.forEach(c => c.checked = shouldCheckAll)
+        shouldCheckAll = !shouldCheckAll;
+        anyChecked()
+            ? getRecipesBtn.removeAttribute('disabled')
+            : getRecipesBtn.setAttribute('disabled', '')
+    }
 
-    
+
     // get a list of the checkboxes and spread it into an array
     // so later you can use Array methods on it
     const checkboxes = [...document.querySelectorAll('input[type=checkbox]')]

@@ -143,7 +143,7 @@ namespace GraduationProjectSkafferiet.Models
             await context.SaveChangesAsync();
         }
 
-        internal async Task<HomeVM> GetIngredientsAndInventoryAsync(string checkState)
+        internal async Task<HomeVM> GetIngredientsAndInventoryAsync()
         {
             ////Demonstration av hur man konverterar csv till array
             //var reader = new StreamReader(File.OpenRead("C:\\Users\\Alexander\\source\\repos\\GraduationProjectSkafferiet\\GraduationProjectSkafferiet\\top-1k-ingredients.csv"));
@@ -176,7 +176,6 @@ namespace GraduationProjectSkafferiet.Models
                 };
             }
             var model = new HomeVM();
-            model.IsAllChosen = checkState == "checked";
             model.IngredientsList = ingredients;
 
 
