@@ -2,8 +2,8 @@
 
 
 
-<main class="form-signin" style="width: 350px; height: 450px; min-width: 400px;">
-    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 100%; height: 100%;" >
+<main class="form-signin" style="width: 350px; height: 470px; min-width: 400px;">
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 100%; height: 100%;">
         <div class="card-body text-center">
             <form asp-controller="Skafferiet" asp-action="Login">
                 <div class="tk-blob mx-auto opacity-50" style="--time: 20s; --amount: 10; --fill: #3bf54d; width: 65px;">
@@ -14,37 +14,36 @@
                 @*<img class="mb-4" src="~/images/user-solid.svg" alt="" width="72" height="57">*@
                 <h1 class="h3 mb-4 mt-4 fw-normal">Please sign in </h1>
                 <div class="form-container" style="margin-top: 1cm;">
-                <div class="form-floating">
+                    <div class="form-floating">
 
-                    <input class="form-control" asp-for="Email" />
-                    <label asp-for="Email"> </label>
-                    <span asp-validation-for="Email"></span>
-                </div>
-                <div class="form-floating">
-                    <input class="form-control" asp-for="Password" />
-                    <label asp-for="Password"> </label> 
-                    <span asp-validation-for="Password"></span>
-                </div>
+                        <input class="form-control" asp-for="Email" />
+                        <label asp-for="Email"> </label>
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" asp-for="Password" />
+                        <label asp-for="Password"> </label>
+                        <span asp-validation-for="Password"></span>
+                    </div>
                 </div>
                 @*<div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
+                <label>
+                <input type="checkbox" value="remember-me"> Remember me
+                </label>
                 </div>*@
                 <div class="mt-4 d-flex justify-content-around">
-                    <input class="btn btn-primary" type="submit" value="Log in" style="width: 35%" />
-                    <a asp-action="Index" class="btn btn-success" style="width: 35%">Register</a>
+                    <input class="btn btn-primary mb-3" type="submit" value="Log in" style="width: 35%" />
                 </div>
-                
+
+                <a asp-action="Index" class="mb-5">Don't have an account yet? Register here...</a>
                 <div class="text-danger" asp-validation-summary="All"></div>
             </form>
+            <lottie-player class="mx-auto" src="https://assets5.lottiefiles.com/private_files/lf30_fcotb6bb.json" background="transparent" speed="1" style="width: 200px; height: 200px;" autoplay></lottie-player>
 
         </div>
     </div>
 </main>
-<lottie-player class="mx-auto" src="https://assets6.lottiefiles.com/packages/lf20_6ySOay.json" background="transparent" speed="0.5" style="width: 250px; height: 250px;" autoplay></lottie-player>
 @section scripts{
     <script src="https://unpkg.com/@("@lottiefiles")/lottie-player@latest/dist/lottie-player.js"></script>
-    
 }
 

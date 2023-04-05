@@ -12,3 +12,11 @@
     width: 500px;
     box-shadow: 0 0 7px 0 grey;
 }
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.btn {
+    --bs-btn-font-size: 1.2rem;
+}

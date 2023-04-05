@@ -46,7 +46,7 @@ a{
 }
 
 .fill-view{
-    min-height: calc(100vh - 165px);
+    min-height: calc(100vh - 110px);
 }
 
 .main-color {

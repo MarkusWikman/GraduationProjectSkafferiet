@@ -8,7 +8,7 @@
 <div class="menu">
     <h1 class="navbar-brandHeader">Skafferiet</h1>
     <br />
-    <h3 class="WelcomeBackStyle">Welcome back @Model.Name!</h3>
+    <h3 class="WelcomeBackStyle">What's in your pantry, @Model.Name?</h3>
 
     <form id="inventory" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="">
         <label class="AIngredientStyle" for="ingredients">Add to pantry:</label>
@@ -64,7 +64,7 @@
     else
     {
         <div>
-            <p class="PantryEmptyStyle">Your pantry is empty!</p>
+            <p class="PantryEmptyStyle">Add your ingredients to see them here!</p>
         </div>
     }
 </div>
