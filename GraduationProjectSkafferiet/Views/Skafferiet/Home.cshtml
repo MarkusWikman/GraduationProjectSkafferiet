@@ -71,9 +71,10 @@
 
 
 <script>
-    let checkboxes = document.querySelectorAll("input[type='checkbox']");
+    let checkBoxes = document.querySelectorAll("input[type='checkbox']");
     let checkButton = document.getElementById('checkButton')
     let shouldCheckAll = false;
+
     function clickAndDisable(link) {
         // disable subsequent clicks
         link.onclick = function (event) {
@@ -82,11 +83,14 @@
     }
     function checkOrUncheck() {
         checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Uncheck all" : checkButton.innerText = "Check all"
-        checkboxes.forEach(c => c.checked = shouldCheckAll)
+        checkBoxes.forEach(c => c.checked = shouldCheckAll)
         shouldCheckAll = !shouldCheckAll;
+        anyChecked()
+            ? getRecipesBtn.removeAttribute('disabled')
+            : getRecipesBtn.setAttribute('disabled', '')
     }
 
-    
+
     // get a list of the checkboxes and spread it into an array
     // so later you can use Array methods on it
     const checkboxes = [...document.querySelectorAll('input[type=checkbox]')]
