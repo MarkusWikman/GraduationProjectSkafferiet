@@ -104,6 +104,10 @@
         return checkboxes.some(x => x.checked)
     }
 
+    function allChecked(){
+        return checkboxes.every(x => x.checked)
+    }
+
     // to every single checkbox, add a click listener
     // again, using an Array method
     // Array.prototype.forEach
@@ -111,11 +115,19 @@
         checkbox.addEventListener('click', () => {
             // when any checkbox is clicked,
             // check if there's any checked checkboxes
-            anyChecked()
-                // if so, enable the button
-                ? getRecipesBtn.removeAttribute('disabled')
-                // otherwise, disable it
-                : getRecipesBtn.setAttribute('disabled', '')
+            if(allChecked()){
+                getRecipesBtn.removeAttribute('disabled')
+                checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
+                shouldCheckAll = !shouldCheckAll;
+            }
+            else if (anyChecked()) {
+                getRecipesBtn.removeAttribute('disabled')
+            }
+            else {
+                getRecipesBtn.setAttribute('disabled', '')
+                checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
+                shouldCheckAll = !shouldCheckAll;
+            }
         })
     })
 
