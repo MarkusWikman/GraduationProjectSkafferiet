@@ -11,7 +11,7 @@
     <h3 class="WelcomeBackStyle">What's in your pantry, @Model.Name?</h3>
 
     <form id="inventory" asp-controller="Skafferiet" asp-action="Home" asp-route-checkState="">
-        <label class="AIngredientStyle" for="ingredients">Add to pantry:</label>
+        @*<label class="AIngredientStyle" for="ingredients">Add to pantry:</label>*@
         <br />
         <select class="selectStyle" asp-for="AddIngredient" asp-items="Model.IngredientsList" autofocus></select>
 

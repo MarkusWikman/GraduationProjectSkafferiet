@@ -36,8 +36,10 @@
 
 }
 .AIngredientStyle {
-    font-weight: bold;
+    font-size: 20px;
+    color: #089e0d;
     font-family: 'montserrat-variablefont_wght';
+    margin-left: 5px;
 }
 
 .PantryEmptyStyle {
