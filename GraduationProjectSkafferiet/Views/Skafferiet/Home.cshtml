@@ -33,7 +33,7 @@
     <input class="checkButton" type="submit" value="Check all" />
     </form>
     }*@
-        <button class="checkButton checkButtonForm" id="checkButton" onclick="checkOrUncheck()">Uncheck all</button>
+        <button class="checkButton checkButtonForm" id="checkButton" onclick="checkOrUncheck()">Unselect All</button>
         <div id="inventoryDiv">
 
             <form id="getRecipes" asp-action="Recipes" asp-controller="Skafferiet">
@@ -82,7 +82,7 @@
         }
     }
     function checkOrUncheck() {
-        checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Uncheck all" : checkButton.innerText = "Check all"
+        checkButton.innerText = shouldCheckAll ? checkButton.innerText = "Unselect All" : checkButton.innerText = "Select All ✅"
         checkBoxes.forEach(c => c.checked = shouldCheckAll)
         shouldCheckAll = !shouldCheckAll;
         anyChecked()
