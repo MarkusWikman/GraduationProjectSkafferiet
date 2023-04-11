@@ -15,7 +15,7 @@
         <br />
         <select class="selectStyle" asp-for="AddIngredient" asp-items="Model.IngredientsList" autofocus></select>
 
-        <button form="inventory" class="btn btn-primary AddIngredientStyle" id="addIngredientButton" onclick="document.getElementById('addIngredientButton').disabled = true ;document.getElementById('inventory').submit(); ">Add Ingredient</button>
+        <button form="inventory" class="btn btn-primary AddIngredientStyle" id="addIngredientButton" onclick="document.getElementById('addIngredientButton').disabled = true ;document.getElementById('inventory').submit(); ">Add</button>
         <button id="getRecipesBtn" type="submit" form="getRecipes" class="btn btn-success GetRecipesStyle" @(!Model.IsIngredientChosen ? "disabled" : "")>Get Recipes</button>
     </form>
 
